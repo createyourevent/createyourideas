@@ -1,0 +1,69 @@
+{
+  "name": "Worksheet",
+  "fields": [
+    {
+      "fieldName": "jobtitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "jobdescription",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateStart",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateEnd",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "costHour",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hours",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "billed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "auto",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "worksheets",
+      "relationshipName": "employee"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "worksheets",
+      "relationshipName": "idea"
+    }
+  ],
+  "entityTableName": "worksheet",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211026180639"
+}

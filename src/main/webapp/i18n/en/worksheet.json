@@ -1,0 +1,34 @@
+{
+  "createyourideasApp": {
+    "worksheet": {
+      "home": {
+        "title": "Worksheets",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Worksheet",
+        "createOrEditLabel": "Create or edit a Worksheet",
+        "notFound": "No Worksheets found"
+      },
+      "created": "A new Worksheet is created with identifier {{ param }}",
+      "updated": "A Worksheet is updated with identifier {{ param }}",
+      "deleted": "A Worksheet is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Worksheet {{ id }}?"
+      },
+      "detail": {
+        "title": "Worksheet"
+      },
+      "id": "ID",
+      "jobtitle": "Jobtitle",
+      "jobdescription": "Jobdescription",
+      "dateStart": "Date Start",
+      "dateEnd": "Date End",
+      "costHour": "Cost Hour",
+      "hours": "Hours",
+      "total": "Total",
+      "billed": "Billed",
+      "auto": "Auto",
+      "employee": "Employee",
+      "idea": "Idea"
+    }
+  }
+}

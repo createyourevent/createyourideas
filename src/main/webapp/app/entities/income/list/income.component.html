@@ -1,0 +1,102 @@
+<div>
+  <h2 id="page-heading" data-cy="IncomeHeading">
+    <span jhiTranslate="createyourideasApp.income.home.title">Incomes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="createyourideasApp.income.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-income"
+        [routerLink]="['/income/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="createyourideasApp.income.home.createLabel"> Create a new Income </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="incomes?.length === 0">
+    <span jhiTranslate="createyourideasApp.income.home.notFound">No incomes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="incomes && incomes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="title">
+            <span jhiTranslate="createyourideasApp.income.title">Title</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="createyourideasApp.income.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="createyourideasApp.income.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="value">
+            <span jhiTranslate="createyourideasApp.income.value">Value</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="billed">
+            <span jhiTranslate="createyourideasApp.income.billed">Billed</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fromParentIdea">
+            <span jhiTranslate="createyourideasApp.income.fromParentIdea">From Parent Idea</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="auto">
+            <span jhiTranslate="createyourideasApp.income.auto">Auto</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="idea.id">
+            <span jhiTranslate="createyourideasApp.income.idea">Idea</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let income of incomes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/income', income.id, 'view']">{{ income.id }}</a>
+          </td>
+          <td>{{ income.title }}</td>
+          <td>{{ income.description }}</td>
+          <td>{{ income.date | formatMediumDatetime }}</td>
+          <td>{{ income.value }}</td>
+          <td>{{ income.billed }}</td>
+          <td>{{ income.fromParentIdea }}</td>
+          <td>{{ income.auto }}</td>
+          <td>
+            <div *ngIf="income.idea">
+              <a [routerLink]="['/idea', income.idea?.id, 'view']">{{ income.idea?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/income', income.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/income', income.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(income)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

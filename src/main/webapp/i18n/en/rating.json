@@ -1,0 +1,9 @@
+{
+  "rating": {
+    "feedback": "Before you can like, you have to enter a short feedback with at least 50 characters in the text field on the right about why you made which decision.",
+    "stars": "Stars",
+    "mail": "Email",
+    "comment": "Comment",
+    "date": "Date"
+  }
+}

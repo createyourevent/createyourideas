@@ -1,0 +1,25 @@
+{
+  "createyourideasApp": {
+    "properties": {
+      "home": {
+        "title": "Properties",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Properties erstellen",
+        "createOrEditLabel": "Properties erstellen oder bearbeiten",
+        "notFound": "Keine Properties gefunden"
+      },
+      "created": "Properties erstellt mit ID {{ param }}",
+      "updated": "Properties aktualisiert mit ID {{ param }}",
+      "deleted": "Properties gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Properties {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Properties"
+      },
+      "id": "ID",
+      "key": "Key",
+      "value": "Value"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+          <div class="box">
+            <h5 jhiTranslate="admin_like_dislike.likes">Like's</h5>
+
+            <p-table [value]="likes" styleClass="p-datatable-striped">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th jhiTranslate="admin_like_dislike.email">Email</th>
+                      <th jhiTranslate="admin_like_dislike.comment">Comment</th>
+                      <th jhiTranslate="admin_like_dislike.date">Date</th>
+                      <th></th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-like>
+                <tr>
+                  <ng-container *ngIf="userLoggedIn.id !== like.user.id">
+                      <td><a (click)="clickUserName(like.user)">{{ like.user.email }}</a></td>
+                  </ng-container>
+                  <ng-container *ngIf="userLoggedIn.id === like.user.id">
+                      <td>{{ like.user.email }}</td>
+                  </ng-container>
+                  <td>{{ like.comment }}</td>
+                <td>{{ like.date | date:'mediumDate'}}</td>
+                <td>
+
+                  <button type="submit" (click)="deleteLikes(like.id)" class="btn btn-danger btn-sm">
+                      <fa-icon icon="times"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+
+                </td>
+              </tr>
+              </ng-template>
+          </p-table>
+          </div>
+        </div>
+		<div class="col-md-6">
+          <div class="box">
+            <h5 jhiTranslate="admin_like_dislike.dislikes">Dislike's</h5>
+
+            <p-table [value]="dislikes" styleClass="p-datatable-striped">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th jhiTranslate="admin_like_dislike.email">Email</th>
+                      <th jhiTranslate="admin_like_dislike.comment">Comment</th>
+                      <th jhiTranslate="admin_like_dislike.date">Date</th>
+                      <th></th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-dislike>
+                <tr>
+                  <ng-container *ngIf="userLoggedIn.id !== dislike.user.id">
+                      <td><a (click)="clickUserName(dislike.user)">{{ dislike.user.email }}</a></td>
+                  </ng-container>
+                  <ng-container *ngIf="userLoggedIn.id === dislike.user.id">
+                      <td>{{ dislike.user.email }}</td>
+                  </ng-container>
+                  <td>{{ dislike.comment }}</td>
+                  <td>{{ dislike.date | date:'mediumDate' }}</td>
+                  <td>
+                      <!--
+                    <button type="submit" (click)="deleteDislikes(dislike.id)" class="btn btn-danger btn-sm">
+                        <fa-icon icon="times"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                  -->
+                  </td>
+                </tr>
+              </ng-template>
+          </p-table>
+
+
+
+            <div *ngFor="let dislike of ">
+                <table>
+
+                </table>
+              </div>
+            </div>
+        </div>
+	</div>
+</div>

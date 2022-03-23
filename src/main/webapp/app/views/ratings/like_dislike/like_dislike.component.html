@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="alert alert-primary" role="alert">
+                        <span jhiTranslate="rating.feedback">
+                            Before you can like, you have to enter a short feedback with at least 50 characters in the text field on the right about why you made which decision.
+                          </span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="comment"></textarea>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3">
+            <button mat-icon-button class="primary" (click)="onLikeClick()" [disabled]="disabled || comment.length  <= 50">
+                <mat-icon aria-label="Like">thumb_up</mat-icon>
+             </button>
+             {{ like }}
+             <button mat-icon-button class="primary" (click)="onDislikeClick()" [disabled]="disabled || comment.length  <= 50">
+                <mat-icon aria-label="Dislike">thumb_down</mat-icon>
+             </button>
+             {{ dislike }}
+        </div>
+    </div>
+</div>

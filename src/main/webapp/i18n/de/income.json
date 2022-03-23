@@ -1,0 +1,32 @@
+{
+  "createyourideasApp": {
+    "income": {
+      "home": {
+        "title": "Incomes",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Income erstellen",
+        "createOrEditLabel": "Income erstellen oder bearbeiten",
+        "notFound": "Keine Incomes gefunden"
+      },
+      "created": "Income erstellt mit ID {{ param }}",
+      "updated": "Income aktualisiert mit ID {{ param }}",
+      "deleted": "Income gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Income {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Income"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "date": "Date",
+      "value": "Value",
+      "billed": "Billed",
+      "fromParentIdea": "From Parent Idea",
+      "auto": "Auto",
+      "incomeIdeas": "Income Ideas",
+      "idea": "Idea"
+    }
+  }
+}

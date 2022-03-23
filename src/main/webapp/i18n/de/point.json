@@ -1,0 +1,32 @@
+{
+  "createyourideasApp": {
+    "point": {
+      "home": {
+        "title": "Points",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Point erstellen",
+        "createOrEditLabel": "Point erstellen oder bearbeiten",
+        "notFound": "Keine Points gefunden"
+      },
+      "created": "Point erstellt mit ID {{ param }}",
+      "updated": "Point aktualisiert mit ID {{ param }}",
+      "deleted": "Point gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Point {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Point"
+      },
+      "id": "ID",
+      "key": "Key",
+      "name": "Name",
+      "keyName": "Key Name",
+      "description": "Description",
+      "keyDescription": "Key Description",
+      "category": "Category",
+      "points": "Points",
+      "countPerDay": "Count Per Day",
+      "creationDate": "Creation Date"
+    }
+  }
+}

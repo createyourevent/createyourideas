@@ -1,0 +1,212 @@
+/**
+ * JHipster JDL model for Accounting
+ */
+
+enum PointsCategory {
+    EVENT, SHOP, SERVICE, COMMENT, RATING, REGISTER, MISCELLANEOUS, PRODUCT
+}
+
+entity Idea {
+    title String required
+    logo ImageBlob required
+	description TextBlob required
+    ideatype Ideatype
+    interest Float required min(0) max(100)
+    distribution Float required min(0) max(100)
+	investment Float required
+    active Boolean
+    date ZonedDateTime
+}
+
+entity Income {
+	title String required
+	description String required
+	date ZonedDateTime required
+	value Float required
+    billed Boolean
+    fromParentIdea Boolean
+    auto Boolean
+}
+
+entity Outgoings {
+	title String required
+	description String required
+	date ZonedDateTime required
+	value Float required
+    billed Boolean
+    toChildIdea Boolean
+    auto Boolean
+}
+
+entity Balance {
+    dailyBalance Float
+    netProfit Float
+    date ZonedDateTime
+    billed Boolean
+}
+
+entity Donation {
+    amount Float
+    date ZonedDateTime
+    billed Boolean
+}
+
+entity Worksheet {
+	jobtitle String required
+	jobdescription TextBlob required
+	dateStart ZonedDateTime
+	dateEnd ZonedDateTime
+    costHour Float required
+	hours Duration
+	total Float
+    billed Boolean
+    auto Boolean
+}
+
+entity Feedback {
+    creationDate LocalDate required
+    name String required minlength(2) maxlength(100)
+    email String required unique
+    feedback TextBlob required
+}
+
+entity ProfitBalance {
+    profit Float
+    profitToSpend Float
+    netProfit Float
+    date LocalDate
+}
+
+entity Share {
+    value Float
+    date ZonedDateTime
+}
+
+entity Point {
+    key String
+    name String
+    keyName String
+    description TextBlob
+    keyDescription String
+    category PointsCategory
+    points Long
+    countPerDay Long
+    creationDate ZonedDateTime
+}
+
+entity MonthlyIncomeInvoice {
+    total Float
+    date ZonedDateTime
+}
+
+entity MonthlyOutgoingsInvoice {
+    total Float
+    date ZonedDateTime
+}
+
+entity Employee {
+    hourlyWages Float
+    date ZonedDateTime
+}
+
+
+entity UserPointAssociation{
+    date ZonedDateTime
+}
+
+
+entity IdeaTransactionId {
+    transactionId String
+    refNo String
+    date ZonedDateTime
+}
+
+entity Application {
+    title String
+    description TextBlob
+    date ZonedDateTime
+    desiredHourlyWage Float
+    seen Boolean
+    responded Boolean
+}
+
+entity IdeaComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity IdeaLikeDislike {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity IdeaStarRating {
+    stars Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity Properties {
+    key String
+    value String
+}
+
+enum Ideatype {
+	LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6, LEVEL7, LEVEL8, LEVEL9
+}
+
+
+// defining multiple OneToMany relationships with comments
+
+relationship OneToOne {
+    Idea{profitBalance} to ProfitBalance{idea}
+    Donation{txId} to IdeaTransactionId{idea}
+}
+
+relationship OneToMany {
+    Idea{incomes} to Income
+    Idea{outgoings} to Outgoings
+    Idea{worksheets} to Worksheet
+    Idea{parents} to Idea
+    Idea{balances} to Balance{idea}
+    Idea{donations} to Donation{idea}
+    Idea{applications} to Application{idea}
+    Idea{monthlyIncomeInvoices} to MonthlyIncomeInvoice{idea}
+    Idea{monthlyOutgoingsInvoice} to MonthlyOutgoingsInvoice{idea}
+    IdeaComment{ideaComments} to IdeaComment{ideaComment}
+}
+
+relationship ManyToOne {
+	Idea{user} to User
+    Donation{user} to User
+    UserPointAssociation{points} to Point
+    UserPointAssociation{users} to User
+    Application{user} to User
+    Employee{user} to User
+    Worksheet{employee} to Employee{worksheets}
+    IdeaStarRating{idea} to Idea{ideaStarRatings}
+    IdeaStarRating{user} to User
+    IdeaComment{idea} to Idea{ideaComments}
+    IdeaComment{user} to User
+    IdeaLikeDislike{idea} to Idea{ideaLikeDislikes}
+    IdeaLikeDislike{user} to User
+}
+
+relationship ManyToMany {
+    Idea{employees} to Employee{ideas}
+    Outgoings{outgoingIdeas} to Idea{ideaOutgoings}
+    Income{incomeIdeas} to Idea{ideaIncomes}
+}
+
+// Set pagination options
+paginate Idea with pagination
+paginate Income, Outgoings, Balance with infinite-scroll
+
+//dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl
+
+

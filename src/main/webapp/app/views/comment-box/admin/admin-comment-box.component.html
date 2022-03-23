@@ -1,0 +1,215 @@
+<p-table [value]="comments" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" dataKey="comment" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th jhiTranslate="admin-comment-box.comment">Comment</th>
+            <th jhiTranslate="admin-comment-box.date">Date</th>
+            <th jhiTranslate="admin-comment-box.email">Email</th>
+            <th jhiTranslate="admin-comment-box.action">Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-comment  let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="comment" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>{{comment.comment}}</td>
+            <td>{{comment.date | date:'mediumDate'}}</td>
+            <ng-container *ngIf="userLoggedIn.id !== comment.user.id">
+                <td><a (click)="clickUserName(comment.user)">{{comment.user.email}}</a></td>
+            </ng-container>
+            <ng-container *ngIf="userLoggedIn.id === comment.user.id">
+                <td>{{ comment.user.email }}</td>
+            </ng-container>
+            <td>
+                <button type="submit" (click)="deleteComment(comment.id)" [disabled]="(comment.shopComments && comment.shopComments.length > 0) || (comment.productComments && comment.productComments.length > 0) || (comment.eventComments && comment.eventComments.length > 0) || (comment.serviceComments && comment.serviceComments.length > 0)" class="btn btn-danger btn-sm">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-comment>
+     <ng-container *ngIf="comment.shopComments">
+      <tr>
+          <td colspan="5">
+              <div class="p-p-3">
+                  <p-table [value]="comment.shopComments" dataKey="id">
+                      <ng-template pTemplate="header">
+                          <tr>
+                            <th pSortableColumn="id">Id</th>
+                            <th jhiTranslate="admin-comment-box.answer">Answer</th>
+                            <th jhiTranslate="admin-comment-box.date">Date</th>
+                            <th jhiTranslate="admin-comment-box.email">Email</th>
+                            <th jhiTranslate="admin-comment-box.action">Action</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-shopComment>
+                        <tr>
+                          <td>{{shopComment.id}}</td>
+                          <td>{{shopComment.comment}}</td>
+                          <td>{{shopComment.date | date:'mediumDate'}}</td>
+                          <ng-container *ngIf="userLoggedIn.id !== shopComment.user.id">
+                              <td><a (click)="clickUserName(shopComment.user)">{{shopComment.user.email}}</a></td>
+                          </ng-container>
+                          <ng-container *ngIf="userLoggedIn.id === shopComment.user.id">
+                              <td>{{ shopComment.user.email }}</td>
+                          </ng-container>
+                          <td>
+                              <button type="submit" (click)="deleteComment(shopComment.id)" class="btn btn-danger btn-sm">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                              </button>
+                          </td>
+                      </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                              <td colspan="6" jhiTranslate="admin-comment-box.no-answers">There are no answers for this comment</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>
+          </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="comment.productComments">
+      <tr>
+          <td colspan="5">
+              <div class="p-p-3">
+                  <p-table [value]="comment.productComments" dataKey="id">
+                      <ng-template pTemplate="header">
+                          <tr>
+                            <th pSortableColumn="id">Id</th>
+                            <th jhiTranslate="admin-comment-box.answer">Answer</th>
+                            <th jhiTranslate="admin-comment-box.date">Date</th>
+                            <th jhiTranslate="admin-comment-box.email">Email</th>
+                            <th jhiTranslate="admin-comment-box.action">Action</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-shopComment>
+                        <tr>
+                          <td>{{shopComment.id}}</td>
+                          <td>{{shopComment.comment}}</td>
+                          <td>{{shopComment.date | date:'mediumDate'}}</td>
+                          <ng-container *ngIf="userLoggedIn.id !== shopComment.user.id">
+                              <td><a (click)="clickUserName(shopComment.user)">{{shopComment.user.email}}</a></td>
+                          </ng-container>
+                          <ng-container *ngIf="userLoggedIn.id === shopComment.user.id">
+                              <td>{{ shopComment.user.email }}</td>
+                          </ng-container>
+                          <td>
+                              <button type="submit" (click)="deleteComment(shopComment.id)" class="btn btn-danger btn-sm">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                              </button>
+                          </td>
+                      </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                              <td colspan="6" jhiTranslate="admin-comment-box.no-answers">There are no answers for this comment</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>
+          </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="comment.serviceComments">
+      <tr>
+          <td colspan="5">
+              <div class="p-p-3">
+                  <p-table [value]="comment.serviceComments" dataKey="id">
+                      <ng-template pTemplate="header">
+                          <tr>
+                            <th pSortableColumn="id">Id</th>
+                            <th jhiTranslate="admin-comment-box.answer">Answer</th>
+                            <th jhiTranslate="admin-comment-box.date">Date</th>
+                            <th jhiTranslate="admin-comment-box.email">Email</th>
+                            <th jhiTranslate="admin-comment-box.action">Action</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-shopComment>
+                        <tr>
+                          <td>{{shopComment.id}}</td>
+                          <td>{{shopComment.comment}}</td>
+                          <td>{{shopComment.date | date:'mediumDate'}}</td>
+                          <ng-container *ngIf="userLoggedIn.id !== shopComment.user.id">
+                              <td><a (click)="clickUserName(shopComment.user)">{{shopComment.user.email}}</a></td>
+                          </ng-container>
+                          <ng-container *ngIf="userLoggedIn.id === shopComment.user.id">
+                              <td>{{ shopComment.user.email }}</td>
+                          </ng-container>
+                          <td>
+                              <button type="submit" (click)="deleteComment(shopComment.id)" class="btn btn-danger btn-sm">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                              </button>
+                          </td>
+                      </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                              <td colspan="6" jhiTranslate="admin-comment-box.no-answers">There are no answers for this comment</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>
+          </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="comment.eventComments">
+      <tr>
+          <td colspan="5">
+              <div class="p-p-3">
+                  <p-table [value]="comment.eventComments" dataKey="id">
+                      <ng-template pTemplate="header">
+                          <tr>
+                            <th pSortableColumn="id">Id</th>
+                            <th jhiTranslate="admin-comment-box.answer">Answer</th>
+                            <th jhiTranslate="admin-comment-box.date">Date</th>
+                            <th jhiTranslate="admin-comment-box.email">Email</th>
+                            <th jhiTranslate="admin-comment-box.action">Action</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-shopComment>
+                        <tr>
+                          <td>{{shopComment.id}}</td>
+                          <td>{{shopComment.comment}}</td>
+                          <td>{{shopComment.date | date:'mediumDate'}}</td>
+                          <ng-container *ngIf="userLoggedIn.id !== shopComment.user.id">
+                              <td><a (click)="clickUserName(shopComment.user)">{{shopComment.user.email}}</a></td>
+                          </ng-container>
+                          <ng-container *ngIf="userLoggedIn.id === shopComment.user.id">
+                              <td>{{ shopComment.user.email }}</td>
+                          </ng-container>
+                          <td>
+                              <button type="submit" (click)="deleteComment(shopComment.id)" class="btn btn-danger btn-sm">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                              </button>
+                          </td>
+                      </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>+6
+                              <td colspan="6" jhiTranslate="admin-comment-box.no-answers">There are no answers for this comment</td>
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>
+          </td>
+      </tr>
+    </ng-container>
+  </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-table>
+
+

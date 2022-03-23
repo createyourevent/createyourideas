@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-profit-balance-heading"
+        data-cy="ProfitBalanceCreateUpdateHeading"
+        jhiTranslate="createyourideasApp.profitBalance.home.createOrEditLabel"
+      >
+        Create or edit a Profit Balance
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.profitBalance.profit" for="field_profit">Profit</label>
+          <input type="number" class="form-control" name="profit" id="field_profit" data-cy="profit" formControlName="profit" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.profitBalance.profitToSpend" for="field_profitToSpend"
+            >Profit To Spend</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="profitToSpend"
+            id="field_profitToSpend"
+            data-cy="profitToSpend"
+            formControlName="profitToSpend"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.profitBalance.netProfit" for="field_netProfit"
+            >Net Profit</label
+          >
+          <input type="number" class="form-control" name="netProfit" id="field_netProfit" data-cy="netProfit" formControlName="netProfit" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.profitBalance.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

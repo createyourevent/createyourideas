@@ -1,0 +1,133 @@
+<p><img src="../../content/images/ads/ads_1.png"/></p>
+<hr/>
+<p-tabView>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.MISCELLANEOUS' | translate }}">
+        <ng-container *ngFor="let point of pointsMiscellaneous">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.REGISTER' | translate }}">
+        <ng-container *ngFor="let point of pointsRegister">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.EVENT' | translate }}">
+        <ng-container *ngFor="let point of pointsEvent">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.SHOP' | translate }}">
+        <ng-container *ngFor="let point of pointsShop">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.SERVICE' | translate }}">
+        <ng-container *ngFor="let point of pointsService">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.COMMENT' | translate }}">
+        <ng-container *ngFor="let point of pointsComment">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.RATING' | translate }}">
+        <ng-container *ngFor="let point of pointsRating">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="{{ 'createyoureventApp.PointsCategory.PRODUCT' | translate }}">
+        <ng-container *ngFor="let point of pointsProduct">
+            <div class="row">
+                <div class="col-md-4 name border">
+                    {{ point.keyName! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.keyDescription! | translate }}
+                </div>
+                <div class="col-md-4 border">
+                    {{ point.points }} {{ 'points.points' | translate }}
+                </div>
+            </div>
+        </ng-container>
+    </p-tabPanel>
+</p-tabView>
+

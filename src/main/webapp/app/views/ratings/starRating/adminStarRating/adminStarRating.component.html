@@ -1,0 +1,41 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+          <div class="box">
+            <h5 jhiTranslate="rating.stars">Stars</h5>
+              <p-table [value]="stars" styleClass="p-datatable-striped" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th jhiTranslate="rating.mail">Email</th>
+                        <th jhiTranslate="rating.stars">Stars</th>
+                        <th jhiTranslate="rating.comment">Comment</th>
+                        <th jhiTranslate="rating.date">Date</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-star>
+                    <tr>
+                      <ng-container *ngIf="userLoggedIn.id !== star.user.id">
+                        <td><a (click)="clickUserName(star.user)">{{ star.user.email }}</a></td>
+                    </ng-container>
+                    <ng-container *ngIf="userLoggedIn.id === star.user.id">
+                        <td>{{ star.user.email }}</td>
+                    </ng-container>
+                    <td>{{ star.stars }}</td>
+                    <td>{{ star.comment }}</td>
+                  <td>{{ star.date | date:'mediumDate'}}</td>
+                  <td>
+
+                    <button type="submit" (click)="deleteLikes(like.id)" class="btn btn-danger btn-sm">
+                        <fa-icon icon="times"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+
+                  </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+          </div>
+        </div>
+	</div>
+</div>

@@ -1,0 +1,49 @@
+{
+  "name": "IdeaComment",
+  "fields": [
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ideaComment",
+      "otherEntityRelationshipName": "ideaComment",
+      "relationshipName": "ideaComments"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "ideaComments",
+      "relationshipName": "idea"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "ideaComment",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ideaComment",
+      "otherEntityRelationshipName": "ideaComments",
+      "relationshipName": "ideaComment"
+    }
+  ],
+  "entityTableName": "idea_comment",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211120014736"
+}

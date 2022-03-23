@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="properties">
+      <h2 data-cy="propertiesDetailsHeading"><span jhiTranslate="createyourideasApp.properties.detail.title">Properties</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ properties.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.properties.key">Key</span></dt>
+        <dd>
+          <span>{{ properties.key }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.properties.value">Value</span></dt>
+        <dd>
+          <span>{{ properties.value }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/properties', properties.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

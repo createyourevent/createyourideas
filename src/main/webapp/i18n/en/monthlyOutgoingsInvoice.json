@@ -1,0 +1,26 @@
+{
+  "createyourideasApp": {
+    "monthlyOutgoingsInvoice": {
+      "home": {
+        "title": "Monthly Outgoings Invoices",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Monthly Outgoings Invoice",
+        "createOrEditLabel": "Create or edit a Monthly Outgoings Invoice",
+        "notFound": "No Monthly Outgoings Invoices found"
+      },
+      "created": "A new Monthly Outgoings Invoice is created with identifier {{ param }}",
+      "updated": "A Monthly Outgoings Invoice is updated with identifier {{ param }}",
+      "deleted": "A Monthly Outgoings Invoice is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Monthly Outgoings Invoice {{ id }}?"
+      },
+      "detail": {
+        "title": "Monthly Outgoings Invoice"
+      },
+      "id": "ID",
+      "total": "Total",
+      "date": "Date",
+      "idea": "Idea"
+    }
+  }
+}

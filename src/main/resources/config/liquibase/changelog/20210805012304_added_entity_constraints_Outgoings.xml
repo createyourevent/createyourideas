@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Outgoings.
+    -->
+    <changeSet id="20210805012304-2" author="jhipster">
+
+        <validCheckSum>ANY</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyTableName="ooutgoings" foreignKeyName="fk_outgoings__idea_id"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseColumnNames="idea_id"
+                                 baseTableName="outgoings"
+                                 constraintName="fk_outgoings__idea_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="idea"/>
+    </changeSet>
+</databaseChangeLog>

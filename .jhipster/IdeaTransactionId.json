@@ -1,0 +1,36 @@
+{
+  "name": "IdeaTransactionId",
+  "fields": [
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "refNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "donation",
+      "otherEntityRelationshipName": "txId",
+      "relationshipName": "idea",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "idea_transaction_id",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211103013433"
+}

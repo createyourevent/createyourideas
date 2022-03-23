@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="worksheet">
+      <h2 data-cy="worksheetDetailsHeading"><span jhiTranslate="createyourideasApp.worksheet.detail.title">Worksheet</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ worksheet.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.jobtitle">Jobtitle</span></dt>
+        <dd>
+          <span>{{ worksheet.jobtitle }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.jobdescription">Jobdescription</span></dt>
+        <dd>
+          <span>{{ worksheet.jobdescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.dateStart">Date Start</span></dt>
+        <dd>
+          <span>{{ worksheet.dateStart | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.dateEnd">Date End</span></dt>
+        <dd>
+          <span>{{ worksheet.dateEnd | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.costHour">Cost Hour</span></dt>
+        <dd>
+          <span>{{ worksheet.costHour }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.hours">Hours</span></dt>
+        <dd>
+          <span>{{ worksheet.hours | duration }} ({{ worksheet.hours }})</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.total">Total</span></dt>
+        <dd>
+          <span>{{ worksheet.total }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.billed">Billed</span></dt>
+        <dd>
+          <span>{{ worksheet.billed }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.auto">Auto</span></dt>
+        <dd>
+          <span>{{ worksheet.auto }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.employee">Employee</span></dt>
+        <dd>
+          <div *ngIf="worksheet.employee">
+            <a [routerLink]="['/employee', worksheet.employee?.id, 'view']">{{ worksheet.employee?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.worksheet.idea">Idea</span></dt>
+        <dd>
+          <div *ngIf="worksheet.idea">
+            <a [routerLink]="['/idea', worksheet.idea?.id, 'view']">{{ worksheet.idea?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/worksheet', worksheet.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

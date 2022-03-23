@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-balance-heading" data-cy="BalanceCreateUpdateHeading" jhiTranslate="createyourideasApp.balance.home.createOrEditLabel">
+        Create or edit a Balance
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.balance.dailyBalance" for="field_dailyBalance"
+            >Daily Balance</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="dailyBalance"
+            id="field_dailyBalance"
+            data-cy="dailyBalance"
+            formControlName="dailyBalance"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.balance.netProfit" for="field_netProfit">Net Profit</label>
+          <input type="number" class="form-control" name="netProfit" id="field_netProfit" data-cy="netProfit" formControlName="netProfit" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.balance.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.balance.billed" for="field_billed">Billed</label>
+          <input type="checkbox" class="form-check" name="billed" id="field_billed" data-cy="billed" formControlName="billed" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.balance.idea" for="field_idea">Idea</label>
+          <select class="form-control" id="field_idea" data-cy="idea" name="idea" formControlName="idea">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ideaOption.id === editForm.get('idea')!.value?.id ? editForm.get('idea')!.value : ideaOption"
+              *ngFor="let ideaOption of ideasSharedCollection; trackBy: trackIdeaById"
+            >
+              {{ ideaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

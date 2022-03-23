@@ -1,0 +1,124 @@
+<div class="row">
+  <div class="col-md-3 padding-150">
+    <h3 class="bold fredoka">Ihre Ideenschmiede schlechthin...</h3>
+    <jhi-gear></jhi-gear>
+    <p class="fredoka">
+      Helfen Sie uns, neue Ideen in diesem Trichter zu erfinden und wir helfen Ihen, das benötigte Startkapital, sprich das Investment zu finden.
+    </p>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="display-4 bold text-shadow" jhiTranslate="home.title">Welcome on Create Your Ideas!</h1>
+
+    <p class="lead bold" jhiTranslate="home.subtitle">With many small ideas to one big dream.</p>
+
+    <div [ngSwitch]="isAuthenticated()">
+      <div class="alert alert-success" *ngSwitchCase="true">
+        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"
+          >You are logged in as user "{{ account.login }}".</span
+        >
+      </div>
+      <!--
+      <div class="alert alert-warning" *ngSwitchCase="false">
+        <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+        <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a
+        ><span jhiTranslate="global.messages.info.authenticated.suffix"
+          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+          password="user").</span
+        >
+      </div>
+      -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="white_box">
+          <p jhiTranslate="createyourideas.home.info">
+            The idea of ​​Create Your Ideas is that we want to make a platform on which we want to centralize all ideas, and map those with a kind of family tree in a kind of funnel. Most of the time, when you want to develop something or have a new idea, you don't start from scratch. Now we would like to map this fact online. A kind of family tree of ideas. At the beginning there are still a few ideas, and we hope that there will be more and more over time. Until it increases exponentially. And an exponential development looks similar to a funnel if you map it in a coordinate system on both sides.
+            So everyone has the opportunity to look at this family tree online and develop any ideas that already exist in the family tree. So we think that we can act very quickly and flexibly if everyone has an insight into it. And with us instead of companies, ideas are founded, which is also much easier, then to found an idea with us instead of our own company that only develops an idea in this sense.
+            Whoever founds an idea with us, which then generates a profit, is of course your profit. You can say that we consider the idea and the company to be synonymous with us. All the complicated starting hurdles that one would have with a company, such as the corporate forms and insurance-related aspects, also fall away. We would like to simplify the start-up process many times over.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img src="../../content/images/createyourideas_logo_100.png" alt="Create Your Ideas Logo"/>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<p-carousel [value]="ideas" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+  <ng-template pTemplate="header">
+    <div class="alert alert-info margin-10 box" role="alert">
+      <h2 class="text-shadow bold">All ideas created on www.createyourideas.net</h2>
+    </div>
+  </ng-template>
+  <ng-template let-idea pTemplate="item">
+      <p-card>
+        <div class="center imagediv">
+          <img [src]="'data:' + idea.logoContentType + ';base64,' + idea.logo" style="max-width: 200px; max-height: 200px" alt="idea image" />
+        </div>
+        <div><h4><a [routerLink]="['/ideas', idea.id, 'view']">{{ idea.title }}</a></h4></div>
+        <div class="row">
+          <div class="col-md-6 bold">
+            Seed capital
+          </div>
+          <div class="col-md-6">
+            {{ idea.investment | currency }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 bold">
+            Donations
+          </div>
+          <div class="col-md-6">
+            {{ idea.id | donations | async | currency }}
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12 bold">
+                Interest
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                {{ idea.interest | percent }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12 bold">
+                Distribution
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                {{ idea.distribution | percent }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="chart">
+          <h5 class="bold">Daily balance</h5>
+          <p-chart type="line" [data]="idea.id | balancesData | async" [options]="basicOptions"></p-chart>
+        </div>
+        <hr/>
+        <a class="donation" [routerLink]="['/ideas', idea.id, 'donation']">{{ 'mind-map-node.donation' | translate }}</a>
+        <a class="donation width-100 float_link" [routerLink]="['/ideas', idea.id, 'employees']">{{ 'mind-map-node.employees' | translate }}</a>
+        <a class="donation width-100 float_link" [routerLink]="['/ideas', idea.id, 'application']">{{ 'mind-map-node.application' | translate }}</a>
+      </p-card>
+  </ng-template>
+</p-carousel>
+<hr/>
+<p-card>
+  <h3>Genauer Ablauf bezüglich des Finanzflusses auf www.createyourideas.net</h3>
+  Wir möchten mit www.createyourideas.net eine "Start-Up" Plattform machen, auf welcher ein jeder bei uns seine eigenen Ideen umsetzen kann. Wir versuchen auf verschiedene Arten anschliessend diese Idee zu pushen, damit man eine genügend grosse Reichweite an Usern erreicht, welche von dieser Idee überzogen sind. Und unter Ideen verstehen wir sowohl reale als auch virtuelle Ideen. Weiter habern wir einen Trichter auf https://createyourideas.net/idea-funnel dargestellt. Die Idee ist bei dem ist folgende: Als Basisidee für alle weiteren Ideen ist die Idee "Create Your Ideas" gedacht. Kurz, diese Plattform, welche Sie gerade nutzen ist eben die Grundidee. Weiter haben wir noch mehrere Ideen entwickelt, welche alle in diesem Trichter zu finden sind. Aus der Informatik weiss man nun, wie wichtig das Prinzip der Wiederverwendbarkeit ist, und dass man Objekte von anderen ableitet. Wir haben es uns nun zur Aufgabe gemacht, dass wir genau diese Prinzipien verfolgen möchten. Sprich, dass man seine Idee aufgrund einer anderen Idee aufbaut. Meistens ist es ja so, dass man nicht immer ganz bei Null anfängt, sondern dass es so was ähnliches schon gibt auf dem Markt. Die Idee besteht nun darin, dass so auch  gleich eine Art Finanzfluss entsteht. Das heisst: Wenn Sie von einer Idee, welche es schon in diesem Trichter gibt, eine neue Idee daraus entwickeln, müssen Sie einerseits einen Zins an die Elternidee ausbezahlen, für das Sie diese Idee weiterentwickeln können und dürfen. Gleichzeitig müssen Sie einen Satz bestimmen, wie viel von dem Nettogewinn von Ihrer Idee sie ausschütten möchten, an Ideen, welche bei Ihnen als Kindidee agieren. Somit entsteht einerseits ein Finanzfluss von Ihrer Idee zur Elternidee, welche man als eine Art Gebühr betrachten kann und nach vorne, sprich wenn neue Ideen aufgrund Ihrer Idee gegründet werden, können Sie selber bestimmen wie viel in Prozent sie jeweils an diese Kinderideen ausbezahlen möchten.
+Und wenn Sie nun die jüngste Idee in diesem Trichter sind, sprich alle Ideen, welche ganz zuvorderst an diesem Trichter sind, müssen Sie diese Ausschüttungen wieder zurück an die Startidee abgeben. Somit sollte eigenlich ein permanentes Wachstum gegeben sein, da ja eben die starken hinteren Ideen die vorderen Kinderideen tragen und subventionieren.
+</p-card>

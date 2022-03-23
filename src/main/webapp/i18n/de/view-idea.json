@@ -1,0 +1,18 @@
+{
+  "view-idea": {
+    "parent-idea": "Elternidee",
+    "outgoings": "Ausgaben",
+    "incomes": "Einnahmen",
+    "investment": "Startkapital",
+    "distribution": "Ausschüttung",
+    "interest": "Verzinsung",
+    "description": "Beschreibung",
+    "page-title": "Übersicht Idee",
+    "daily-outgoings": "Tägliche Ausgaben",
+    "daily-incomes": "Tägliche Einnahmen",
+    "daily-worksheets": "Tägliche Arbeitskosten",
+    "daily-profit": "Täglicher Gewinn",
+    "worksheets": "Arbeitskosten",
+    "profit": "Gewinn"
+  }
+}

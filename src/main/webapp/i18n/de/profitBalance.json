@@ -1,0 +1,28 @@
+{
+  "createyourideasApp": {
+    "profitBalance": {
+      "home": {
+        "title": "Profit Balances",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Profit Balance erstellen",
+        "createOrEditLabel": "Profit Balance erstellen oder bearbeiten",
+        "notFound": "Keine Profit Balances gefunden"
+      },
+      "created": "Profit Balance erstellt mit ID {{ param }}",
+      "updated": "Profit Balance aktualisiert mit ID {{ param }}",
+      "deleted": "Profit Balance gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Profit Balance {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Profit Balance"
+      },
+      "id": "ID",
+      "profit": "Profit",
+      "profitToSpend": "Profit To Spend",
+      "netProfit": "Net Profit",
+      "date": "Date",
+      "idea": "Idea"
+    }
+  }
+}

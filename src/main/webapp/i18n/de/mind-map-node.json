@@ -1,0 +1,15 @@
+{
+  "mind-map-node": {
+    "donation": "Spende",
+    "idea": "Idee",
+    "investment": "Startkapital",
+    "interest": "Verzinsung",
+    "distribution": "Ausschüttung",
+    "income": "Einnahmen",
+    "outgoing": "Ausgaben",
+    "goto-profile": "Gehe zu Profil",
+    "employees": "Mitarbeiter",
+    "application": "Bewerbung",
+    "donations": "Spenden"
+  }
+}

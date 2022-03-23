@@ -1,0 +1,34 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="urs_baumann_1977 (generated)" id="1636298347533-1">
+        <createTable tableName="application">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="applicationPK"/>
+            </column>
+            <column name="date" type="datetime(6)"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="desired_hourly_wage" type="FLOAT"/>
+            <column name="title" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1636298347533-2">
+        <createTable tableName="employee">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="employeePK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="hourly_wages" type="FLOAT"/>
+            <column name="employees_id" type="VARCHAR(255)"/>
+            <column name="idea_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1636298347533-3">
+        <addUniqueConstraint columnNames="employees_id" constraintName="UC_EMPLOYEEEMPLOYEES_ID_COL" tableName="employee"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1636298347533-4">
+        <addForeignKeyConstraint baseColumnNames="employees_id" baseTableName="employee" constraintName="FK6i5gjt9yjjimqllcu54qf9rof" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1636298347533-5">
+        <addForeignKeyConstraint baseColumnNames="idea_id" baseTableName="employee" constraintName="FKcrmkn7h8chr1tuyfupefx8kp2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="idea" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

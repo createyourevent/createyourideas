@@ -1,0 +1,4 @@
+<ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+    <ng-chat #ngChatInstance *ngIf="userId" [adapter]="adapter" [persistWindowsState]="false" [emojisEnabled]="false" [groupAdapter]="adapter" [pollFriendsList]="true"  [userId]="userId"  [historyEnabled]="true" [historyPageSize]="4"  [theme]="'dark-theme'" (onMessagesSeen)="onMessageSeen($event)"></ng-chat>
+</ng-container>
+

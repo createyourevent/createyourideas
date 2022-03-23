@@ -1,0 +1,47 @@
+<p-toast key="myKey1"></p-toast>
+
+<h1 class="monoton" jhiTranslate="exchange.title">Temple of gifts</h1>
+
+<div class="alert alert-primary" role="alert">
+    <span jhiTranslate="exchange.info">
+        On this page you can see all the gifts that you can exchange for your points. Most of the gifts are donations and we would like to thank all donors once again.
+    </span>
+</div>
+
+<hr/>
+<div class="box_yellow">
+<h2 jhiTranslate="exchange.all-gifts" class="monoton">All gifts</h2>
+<hr/>
+<p-carousel [value]="gifts" [numVisible]="5" [numScroll]="1">
+    <ng-template let-gift pTemplate="item">
+        <p-card class="card">
+            <ng-template pTemplate="header">
+                <img [src]="'data:' + gift.photoContentType + ';base64,' + gift.photo" style="max-width: 250px;" alt="gift image"/>
+            </ng-template>
+            <dl class="row-md jh-entity-details">
+                <h3><span>{{ gift.title }}</span></h3>
+
+                <dd>
+                    <span>{{ gift.description }}</span>
+                </dd>
+                <hr/>
+                <dt><span jhiTranslate="exchange.points">Points</span></dt>
+                <dd>
+                    <span>{{ gift.points }}</span>
+                </dd>
+                <dt><span jhiTranslate="exchange.stock">Stock</span></dt>
+                <dd>
+                    <span>{{ gift.stock }}</span>
+                </dd>
+            </dl>
+            <ng-template pTemplate="footer">
+                <ng-container *ngIf="user">
+                    <ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+                        <button pButton (click)="exchange(gift)" type="button" icon="pi pi-heart" iconPos="left" label="{{ 'exchange.exchange' | translate }}"></button>
+                    </ng-container>
+                </ng-container>
+            </ng-template>
+        </p-card>
+    </ng-template>
+</p-carousel>
+</div>

@@ -1,0 +1,32 @@
+{
+  "createyourideasApp": {
+    "outgoings": {
+      "home": {
+        "title": "Outgoings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Outgoings",
+        "createOrEditLabel": "Create or edit a Outgoings",
+        "notFound": "No Outgoings found"
+      },
+      "created": "A new Outgoings is created with identifier {{ param }}",
+      "updated": "A Outgoings is updated with identifier {{ param }}",
+      "deleted": "A Outgoings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Outgoings {{ id }}?"
+      },
+      "detail": {
+        "title": "Outgoings"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "date": "Date",
+      "value": "Value",
+      "billed": "Billed",
+      "toChildIdea": "To Child Idea",
+      "auto": "Auto",
+      "outgoingIdeas": "Outgoing Ideas",
+      "idea": "Idea"
+    }
+  }
+}

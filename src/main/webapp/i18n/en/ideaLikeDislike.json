@@ -1,0 +1,29 @@
+{
+  "createyourideasApp": {
+    "ideaLikeDislike": {
+      "home": {
+        "title": "Idea Like Dislikes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Idea Like Dislike",
+        "createOrEditLabel": "Create or edit a Idea Like Dislike",
+        "notFound": "No Idea Like Dislikes found"
+      },
+      "created": "A new Idea Like Dislike is created with identifier {{ param }}",
+      "updated": "A Idea Like Dislike is updated with identifier {{ param }}",
+      "deleted": "A Idea Like Dislike is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Idea Like Dislike {{ id }}?"
+      },
+      "detail": {
+        "title": "Idea Like Dislike"
+      },
+      "id": "ID",
+      "like": "Like",
+      "dislike": "Dislike",
+      "date": "Date",
+      "comment": "Comment",
+      "idea": "Idea",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.title {
+    margin-top: 20px;
+}
+
+.title-category {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.titel-box {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.box {
+    background-color: #D1B9A7;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin: 5px;
+    padding: 10px;
+}
+
+.outter {
+    width: 100%;
+}
+
+.inner {
+    margin: 0 auto;
+    width: 350px;
+}
+
+.titlebar {
+    background-color: #3AA933;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin: 7px;
+}

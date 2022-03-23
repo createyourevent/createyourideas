@@ -1,0 +1,178 @@
+{
+  "name": "Idea",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ideatype",
+      "fieldType": "Ideatype",
+      "fieldValues": "LEVEL1,LEVEL2,LEVEL3,LEVEL4,LEVEL5,LEVEL6,LEVEL7,LEVEL8,LEVEL9"
+    },
+    {
+      "fieldName": "interest",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "0",
+      "fieldValidateRulesMax": "1"
+    },
+    {
+      "fieldName": "distribution",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "0",
+      "fieldValidateRulesMax": "1"
+    },
+    {
+      "fieldName": "investment",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "profitBalance",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "profitBalance",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "income",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "incomes"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "outgoings",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "outgoings"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "worksheet",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "worksheets"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "parents"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "balance",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "balances"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "donation",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "donations"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "application",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "applications"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "monthlyIncomeInvoice",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "monthlyIncomeInvoices"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "monthlyOutgoingsInvoice",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "monthlyOutgoingsInvoice"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "ideas",
+      "relationshipName": "employees",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "parents",
+      "relationshipName": "idea"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ideaStarRating",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "ideaStarRatings"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ideaComment",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "ideaComments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ideaLikeDislike",
+      "otherEntityRelationshipName": "idea",
+      "relationshipName": "ideaLikeDislikes"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "outgoings",
+      "otherEntityRelationshipName": "outgoingIdeas",
+      "relationshipName": "ideaOutgoings",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "income",
+      "otherEntityRelationshipName": "incomeIdeas",
+      "relationshipName": "ideaIncomes",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "idea",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211026180635"
+}

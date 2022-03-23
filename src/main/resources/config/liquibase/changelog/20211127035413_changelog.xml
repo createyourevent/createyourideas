@@ -1,0 +1,53 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-1">
+        <createTable tableName="rel_idea__idea_incomes">
+            <column name="idea_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="idea_incomes_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-2">
+        <createTable tableName="rel_idea__idea_outgoings">
+            <column name="idea_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="idea_outgoings_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-3">
+        <addForeignKeyConstraint baseColumnNames="idea_id" baseTableName="rel_idea__idea_outgoings" constraintName="FK44igcaelh8omiuaraywalykdn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="idea" validate="true"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-4">
+        <addForeignKeyConstraint baseColumnNames="idea_outgoings_id" baseTableName="rel_idea__idea_outgoings" constraintName="FKbmyyphv8f7b75pdpfwwktcdc" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="outgoings" validate="true"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-5">
+        <addForeignKeyConstraint baseColumnNames="idea_id" baseTableName="rel_idea__idea_incomes" constraintName="FKegs5kjsuvo48ksmqs4ijsspf4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="idea" validate="true"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-6">
+        <addForeignKeyConstraint baseColumnNames="idea_incomes_id" baseTableName="rel_idea__idea_incomes" constraintName="FKqf6blxyhauoh11aww0hsvcaie" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="income" validate="true"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-7">
+        <dropForeignKeyConstraint baseTableName="idea" constraintName="FK224tsu719b4gutp2bnpo4ydnx"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-8">
+        <dropForeignKeyConstraint baseTableName="idea" constraintName="FKs315c6ahwbvdmb57il1b3uq5r"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-9">
+        <dropUniqueConstraint constraintName="UC_IDEAINCOME_ID_COL" tableName="idea"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-10">
+        <dropUniqueConstraint constraintName="UC_IDEAOUTGOING_ID_COL" tableName="idea"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-11">
+        <dropColumn columnName="income_id" tableName="idea"/>
+    </changeSet>
+    <changeSet author="urs_baumann_1977 (generated)" id="1637985261293-12">
+        <dropColumn columnName="outgoing_id" tableName="idea"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="idea">
+      <h2 data-cy="ideaDetailsHeading"><span jhiTranslate="view-idea.page-title">Idea</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <p-card>
+      <div class="row">
+        <div class="col-md-6">
+          <h2><span>{{ idea.title }}</span></h2>
+          <hr/>
+          <div *ngIf="idea.idea">
+          <p-card>
+            <dt><span jhiTranslate="view-idea.parent-idea">Parent idea</span></dt>
+            <dd>
+                <a [routerLink]="['/idea', idea.idea?.id, 'view']">{{ idea.idea?.title}}</a>
+            </dd>
+            <img [src]="'data:' + idea.idea.logoContentType + ';base64,' + idea.idea.logo" style="max-width: 100%" alt="idea image" />
+          </p-card>
+         </div>
+        </div>
+        <div class="col-md-6">
+          <img [src]="'data:' + idea.logoContentType + ';base64,' + idea.logo" style="max-width: 100%" alt="idea image" />
+        </div>
+      </div>
+    </p-card>
+    <p-card>
+      <div class="row">
+        <div class="col-md-12">
+          <dl class="row-md jh-entity-details">
+            <dt><span jhiTranslate="view-idea.description">Description</span></dt>
+            <dd>
+                <div class="ql-snow">
+                  <div class="ql-editor">
+                      <div [innerHTML]="idea.description | safeHtml"></div>
+                  </div>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </p-card>
+    <p-card>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="view-idea.interest">Interest</span></dt>
+                <dd>
+                  <span>{{ idea.interest | percent }}</span>
+                </dd>
+                <dt><span jhiTranslate="view-idea.distribution">Distribution</span></dt>
+                <dd>
+                  <span>{{ idea.distribution | percent }}</span>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-3">
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="view-idea.investment">Investment</span></dt>
+                <dd>
+                  <span>{{ idea.investment | currency }}</span>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-3">
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="view-idea.incomes">Incomes</span></dt>
+                <dd>
+                  <span>{{ incomes | currency }}</span>
+                </dd>
+                <dt><span jhiTranslate="view-idea.outgoings">Outgoings</span></dt>
+                <dd>
+                  <span>{{ outgoings | currency }}</span>
+                </dd>
+                <dt><span jhiTranslate="view-idea.worksheets">Wrksheets</span></dt>
+                <dd>
+                  <span>{{ worksheets | currency }}</span>
+                </dd>
+                <hr/>
+                <dt><span jhiTranslate="view-idea.profit">Profit</span></dt>
+                <dd>
+                  <span>{{ profit | currency }}</span>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-3">
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="view-idea.daily-incomes">Daily incomes</span></dt>
+                <dd>
+                  <span>{{ dailyIncomes | currency }}</span>
+                </dd>
+                <dt><span jhiTranslate="view-idea.daily-outgoings">Daily outgoings</span></dt>
+                <dd>
+                  <span>{{ dailyOutgoings | currency }}</span>
+                </dd>
+                <dt><span jhiTranslate="view-idea.daily-worksheets">Daily worksheet</span></dt>
+                <dd>
+                  <span>{{ dailyWorksheets | currency }}</span>
+                </dd>
+                <hr/>
+                <dt><span jhiTranslate="view-idea.daily-profit">Daily profit</span></dt>
+                <dd>
+                  <span>{{ dailyProfit | currency }}</span>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-card>
+
+    <ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+    <p-card>
+        <jhi-like-dislike [like]="like" [dislike]="dislike" [disabled]="rated" (liked)="onVoted($event)"></jhi-like-dislike>
+        <jhi-star-rating [val]="stars" (rated)="onChangesStars($event)" [disabled]="ratedStars"></jhi-star-rating>
+    </p-card>
+  </ng-container>
+
+    <p-card>
+      <ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+        <jhi-comment-box [comments]="comments" (comment)="onCommented($event)" (answer)="onAnswered($event)"></jhi-comment-box>
+      </ng-container>
+    </p-card>
+
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ideas', idea.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+
+      <a class="donation float_link" href="/ideas/{{ idea.id }}/donation">{{ 'mind-map-node.donation' | translate }}</a>
+
+    </div>
+  </div>
+</div>

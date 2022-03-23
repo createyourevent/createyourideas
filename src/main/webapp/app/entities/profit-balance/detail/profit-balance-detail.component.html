@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="profitBalance">
+      <h2 data-cy="profitBalanceDetailsHeading">
+        <span jhiTranslate="createyourideasApp.profitBalance.detail.title">Profit Balance</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ profitBalance.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.profitBalance.profit">Profit</span></dt>
+        <dd>
+          <span>{{ profitBalance.profit }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.profitBalance.profitToSpend">Profit To Spend</span></dt>
+        <dd>
+          <span>{{ profitBalance.profitToSpend }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.profitBalance.netProfit">Net Profit</span></dt>
+        <dd>
+          <span>{{ profitBalance.netProfit }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.profitBalance.date">Date</span></dt>
+        <dd>
+          <span>{{ profitBalance.date | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/profit-balance', profitBalance.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

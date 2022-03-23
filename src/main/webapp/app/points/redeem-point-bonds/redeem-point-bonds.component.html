@@ -1,0 +1,42 @@
+<p>
+  <span jhiTranslate="redeem-point-bonds.info">
+      Please enter the 15-digit code below, which you will find at the bottom of the point value. You can only use this coupon once.
+  </span>
+</p>
+<hr/>
+<div class="points-count">
+  <span class="p-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="code">
+    <label for="float-input">Code</label>
+  </span>
+</div>
+<hr/>
+<button pButton type="button" label="{{ 'redeem-point-bonds.check-code' | translate }}" (click)="checkCode()" class="p-button-info"></button>
+
+<hr/>
+
+<ng-container *ngIf="codeValide === true">
+  <div class="alert alert-info" role="alert">
+    <span jhiTranslate="redeem-point-bonds.code-valid">
+      The entered code is valid.
+    </span>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="codeValide === false">
+  <div class="alert alert-warning" role="alert">
+    <span jhiTranslate="redeem-point-bonds.code-invalid">
+      The entered code is not valid.
+    </span>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="codeValide === null">
+  <div class="alert alert-primary" role="alert">
+    <span jhiTranslate="redeem-point-bonds.code-null">
+      Please enter the code from the point bond.
+    </span>
+  </div>
+</ng-container>
+
+

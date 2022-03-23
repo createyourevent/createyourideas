@@ -1,0 +1,6 @@
+{
+  "payment": {
+    "insert-donation": "Sie müssen einen Spendenbetrag eingeben der mindestens 10 CHF beträgt.",
+    "donation-terminal": "Spenden-Terminal"
+  }
+}

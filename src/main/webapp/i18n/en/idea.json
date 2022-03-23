@@ -1,0 +1,50 @@
+{
+  "createyourideasApp": {
+    "idea": {
+      "home": {
+        "title": "Ideas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Idea",
+        "createOrEditLabel": "Create or edit a Idea",
+        "notFound": "No Ideas found"
+      },
+      "created": "A new Idea is created with identifier {{ param }}",
+      "updated": "A Idea is updated with identifier {{ param }}",
+      "deleted": "A Idea is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Idea {{ id }}?"
+      },
+      "detail": {
+        "title": "Idea"
+      },
+      "id": "ID",
+      "title": "Title",
+      "logo": "Logo",
+      "description": "Description",
+      "ideatype": "Ideatype",
+      "interest": "Interest",
+      "distribution": "Distribution",
+      "investment": "Investment",
+      "active": "Active",
+      "date": "Date",
+      "profitBalance": "Profit Balance",
+      "incomes": "Incomes",
+      "outgoings": "Outgoings",
+      "worksheets": "Worksheets",
+      "parents": "Parents",
+      "balances": "Balances",
+      "donations": "Donations",
+      "applications": "Applications",
+      "monthlyIncomeInvoices": "Monthly Income Invoices",
+      "monthlyOutgoingsInvoice": "Monthly Outgoings Invoice",
+      "user": "User",
+      "employees": "Employees",
+      "idea": "Idea",
+      "ideaStarRatings": "Idea Star Ratings",
+      "ideaComments": "Idea Comments",
+      "ideaLikeDislikes": "Idea Like Dislikes",
+      "ideaOutgoings": "Idea Outgoings",
+      "ideaIncomes": "Idea Incomes"
+    }
+  }
+}

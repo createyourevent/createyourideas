@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="application">
+      <h2 data-cy="applicationDetailsHeading"><span jhiTranslate="createyourideasApp.application.detail.title">Application</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ application.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.title">Title</span></dt>
+        <dd>
+          <span>{{ application.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.description">Description</span></dt>
+        <dd>
+          <span>{{ application.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.date">Date</span></dt>
+        <dd>
+          <span>{{ application.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.desiredHourlyWage">Desired Hourly Wage</span></dt>
+        <dd>
+          <span>{{ application.desiredHourlyWage }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.seen">Seen</span></dt>
+        <dd>
+          <span>{{ application.seen }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.responded">Responded</span></dt>
+        <dd>
+          <span>{{ application.responded }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.user">User</span></dt>
+        <dd>
+          <span>{{ application.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.application.idea">Idea</span></dt>
+        <dd>
+          <div *ngIf="application.idea">
+            <a [routerLink]="['/idea', application.idea?.id, 'view']">{{ application.idea?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/application', application.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

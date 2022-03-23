@@ -1,0 +1,2 @@
+export const ADDRESS_REGEX = '(?:([A-z\\.-ßäöüÄÖÜ]+[\\sA-z\\.-ßäöüÄÖÜ]*[\\sA-z\\.-ßäöüÄÖÜ]*[\\sA-z\\.-ßäöüÄÖÜ]*[\\s]*[0-9]*)([\\s]*[,]?[\\s]*)([\\d][\\d][\\d][\\d][\\d]?[\\s]+[A-z\\.-ßäöüÄÖÜ]+[\\sA-z\\.-ßäöüÄÖÜ]*[\\sA-z\\.-ßäöüÄÖÜ]*[\\sA-z\\.-ßäöüÄÖÜ]*)([\\s]*[,]?[\\s]*)([A-z\\.-ßäöüÄÖÜ]+[\\s]*[A-z]*[\\s]*[A-z]*)$)';
+export const STRIPE_TEST = 'pk_test_51IBDrlEnDhYCo1CVLo2cN2xoXnHKAivO9NFcsXEOwzv5IAllFHvA55eWiLOxlEkaKd83ndjGawYe9qQPQAY99Fqv00BtSnJJ0p';

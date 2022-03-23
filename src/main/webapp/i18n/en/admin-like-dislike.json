@@ -1,0 +1,9 @@
+{
+  "admin_like_dislike": {
+    "likes": "Like's",
+    "dislikes": "Dislike's",
+    "email": "Email",
+    "comment": "Comment",
+    "date": "Date"
+  }
+}

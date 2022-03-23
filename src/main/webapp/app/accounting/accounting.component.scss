@@ -1,0 +1,29 @@
+.container-select-idea {
+	width: 90%;
+    height: 90px;
+    border: 1px solid black;
+    padding: 10px;
+	margin: 10px auto 30px;;
+	border-radius: 10px;
+	background: rgb(59,170,52);
+	background: linear-gradient(0deg, rgba(59,170,52,1) 0%, rgba(76,118,8,1) 0%, rgba(211,195,185,1) 100%);
+	color: white;
+	font-weight: bold;
+	-webkit-box-shadow: 24px 18px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 24px 18px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 24px 18px 5px 0px rgba(0,0,0,0.75);
+}
+
+#select-idea {
+	float: right;
+}
+
+.selected-idea-alert {
+    float: left;
+    width: 70%;
+    margin-top: 5px;
+}
+
+.selectIdeaTitle{
+	font-weight: 400;
+}

@@ -1,0 +1,272 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-idea-heading" data-cy="IdeaCreateUpdateHeading" jhiTranslate="createyourideasApp.idea.home.createOrEditLabel">
+        Create or edit a Idea
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+        <!--
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.idea" for="field_idea">Parent idea</label>
+          <select class="form-control" id="field_idea" data-cy="idea" name="idea" formControlName="idea">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ideaOption.id === editForm.get('idea')!.value?.id ? editForm.get('idea')!.value : ideaOption"
+              *ngFor="let ideaOption of ideasSharedCollection; trackBy: trackIdeaById"
+            >
+              {{ ideaOption.title }}
+            </option>
+          </select>
+        </div>
+    -->
+      </div>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.logo" for="field_logo">Logo</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('logoContentType')!.value + ';base64,' + editForm.get('logo')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('logo')!.value"
+              alt="idea image"
+            />
+            <div *ngIf="editForm.get('logo')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left">{{ editForm.get('logoContentType')!.value }}, {{ byteSize(editForm.get('logo')!.value) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('logo', 'logoContentType', 'file_logo')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_logo"
+              data-cy="logo"
+              (change)="setFileData($event, 'logo', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="logo" id="field_logo" data-cy="logo" formControlName="logo" />
+          <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType" formControlName="logoContentType" />
+          <div *ngIf="editForm.get('logo')!.invalid && (editForm.get('logo')!.dirty || editForm.get('logo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('logo')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.description" for="field_description">Description</label>
+          <quill-editor [styles]="{height: '350px'}" formControlName="description" [modules]="modules" (onEditorCreated)="getEditorInstance($event)">
+            <quill-view format="text" theme="snow">
+            </quill-view>
+          </quill-editor>
+          <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('description')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+        <!--
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.ideatype" for="field_ideatype">Ideatype</label>
+          <select class="form-control" name="ideatype" formControlName="ideatype" id="field_ideatype" data-cy="ideatype">
+            <option [ngValue]="null">{{ 'createyourideasApp.Ideatype.null' | translate }}</option>
+            <option *ngFor="let ideatype of ideatypeValues" [value]="ideatype">
+              {{ 'createyourideasApp.Ideatype.' + ideatype | translate }}
+            </option>
+          </select>
+        </div>
+        -->
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.interest" for="field_interest">Interest</label>
+          <p-knob name="interest" id="field_interest" data-cy="interest" formControlName="interest" valueTemplate="{value}%"></p-knob>
+          <div *ngIf="editForm.get('interest')!.invalid && (editForm.get('interest')!.dirty || editForm.get('interest')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('interest')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('interest')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('interest')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 1 }"
+            >
+              This field cannot be more than 1.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('interest')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.distribution" for="field_distribution"
+            >Distribution</label
+          >
+          <p-knob name="distribution" id="field_distribution" data-cy="distribution" formControlName="distribution" valueTemplate="{value}%"></p-knob>
+          <div
+            *ngIf="editForm.get('distribution')!.invalid && (editForm.get('distribution')!.dirty || editForm.get('distribution')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('distribution')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('distribution')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('distribution')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 1 }"
+            >
+              This field cannot be more than 1.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('distribution')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+<!--
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.investment" for="field_investment">Investment</label>
+          <input
+            type="number"
+            class="form-control"
+            name="investment"
+            id="field_investment"
+            data-cy="investment"
+            formControlName="investment"
+          />
+          <div *ngIf="editForm.get('investment')!.invalid && (editForm.get('investment')!.dirty || editForm.get('investment')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('investment')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('investment')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.active" for="field_active">Active</label>
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.profitBalance" for="field_profitBalance"
+            >Profit Balance</label
+          >
+          <select
+            class="form-control"
+            id="field_profitBalance"
+            data-cy="profitBalance"
+            name="profitBalance"
+            formControlName="profitBalance"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                profitBalanceOption.id === editForm.get('profitBalance')!.value?.id
+                  ? editForm.get('profitBalance')!.value
+                  : profitBalanceOption
+              "
+              *ngFor="let profitBalanceOption of profitBalancesCollection; trackBy: trackProfitBalanceById"
+            >
+              {{ profitBalanceOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.idea.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+        -->
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

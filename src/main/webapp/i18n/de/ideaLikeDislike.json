@@ -1,0 +1,29 @@
+{
+  "createyourideasApp": {
+    "ideaLikeDislike": {
+      "home": {
+        "title": "Idea Like Dislikes",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Idea Like Dislike erstellen",
+        "createOrEditLabel": "Idea Like Dislike erstellen oder bearbeiten",
+        "notFound": "Keine Idea Like Dislikes gefunden"
+      },
+      "created": "Idea Like Dislike erstellt mit ID {{ param }}",
+      "updated": "Idea Like Dislike aktualisiert mit ID {{ param }}",
+      "deleted": "Idea Like Dislike gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Idea Like Dislike {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Idea Like Dislike"
+      },
+      "id": "ID",
+      "like": "Like",
+      "dislike": "Dislike",
+      "date": "Date",
+      "comment": "Comment",
+      "idea": "Idea",
+      "user": "User"
+    }
+  }
+}

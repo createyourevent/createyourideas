@@ -1,0 +1,29 @@
+{
+  "createyourideasApp": {
+    "donation": {
+      "home": {
+        "title": "Donations",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Donation erstellen",
+        "createOrEditLabel": "Donation erstellen oder bearbeiten",
+        "notFound": "Keine Donations gefunden"
+      },
+      "created": "Donation erstellt mit ID {{ param }}",
+      "updated": "Donation aktualisiert mit ID {{ param }}",
+      "deleted": "Donation gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Donation {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Donation"
+      },
+      "id": "ID",
+      "amount": "Amount",
+      "date": "Date",
+      "billed": "Billed",
+      "txId": "Tx Id",
+      "user": "User",
+      "idea": "Idea"
+    }
+  }
+}

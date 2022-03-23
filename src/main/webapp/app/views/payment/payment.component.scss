@@ -1,0 +1,55 @@
+.border {
+    border: 1px solid black;
+  }
+  
+  .card {
+    width: 280px;
+    float: left;
+    margin: 10px;
+  }
+  
+  .clear{
+    clear: both;
+  }
+  
+  .card-header {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .big {
+    font-size: larger;
+  }
+  
+  .padding {
+    padding: 4px;
+  }
+  
+  .card-toolbar {
+    border-radius: 10px;
+    margin-top: 10px; 
+  }
+  
+  .card-form {
+    margin: 15px;
+    float: left;
+  }
+  
+  .card-frame {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    width: 400px; 
+  }
+  
+  .pay-button {
+    width: 100px;
+  }
+  
+  .paypal-buttons {
+    margin: 10px;
+    position: relative;
+    z-index: 0;
+  }

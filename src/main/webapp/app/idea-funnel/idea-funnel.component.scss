@@ -1,0 +1,42 @@
+#jsmind_container {
+    float: left;
+    width: 100%;
+    height: 800px;
+  }
+
+
+
+/* important section */
+.jsmind-inner{position:relative;overflow:auto;width:100%;height:100%;}/*box-shadow:0 0 2px #000;*/
+.jsmind-inner{
+  moz-user-select:-moz-none;
+  -moz-user-select:none;
+  -o-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+/* z-index:1 */
+canvas{position:absolute;z-index:1;}
+
+/* z-index:2 */
+jmnodes{position:absolute;z-index:2;background-color:rgba(0,0,0,0);}/*background color is necessary*/
+jmnode{position:absolute;cursor:default;max-width:550px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+jmexpander{position:absolute;width:11px;height:11px;display:block;overflow:hidden;line-height:7px;font-size:12px;text-align:center;border-radius:6px;border-width:1px;border-style:solid;cursor:pointer;}
+
+/* default theme */
+jmnode{padding:10px;background-color:#fff;color:#333;border-radius:5px;box-shadow:1px 1px 1px #666; margin-top: 15px; margin-bottom: 15px;}
+jmnode:hover{box-shadow:2px 2px 8px #000;background-color:#ebebeb;color:#333;}
+jmnode.selected{background-color:#11f;color:#fff;box-shadow:2px 2px 8px #000;}
+jmnode.root{font-size:14px;}
+jmexpander{border-color:gray;}
+jmexpander:hover{border-color:#000;}
+
+@media screen and (max-device-width: 1024px) {
+  jmnode{padding:5px;border-radius:3px;font-size:14px;}
+  jmnode.root{font-size:21px;}
+}
+
+

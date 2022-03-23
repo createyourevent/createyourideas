@@ -1,0 +1,55 @@
+.chat-notification {
+  background-image: url('../../../content/images/Chat-2-75.png');
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  right: 75px;
+  top: 44px;
+  z-index: 4;
+}
+
+.totalMessage {
+  position: absolute;
+  right: 60px;
+  top: 36px;
+  background-color: aqua;
+  text-align: center;
+  width: 40px;
+  font-weight: bold;
+  color: white;
+  border-radius: 20px;
+  z-index: 4;
+  font-size: large;
+}
+
+.chat-notification-users {
+  background-color: black;
+  opacity: 0.6;
+  width: 250px;
+  min-height: 55px;
+  position: absolute;
+  right: 37.5px;
+  top: 245px;
+  z-index: 5;
+  border-radius: 10px;
+  border: white 1px solid;
+  color: white;
+  padding: 5px;
+  padding-top: 20px;
+  font-weight: bold;
+}
+
+.user {
+  width: 75%;
+  float: left;
+}
+
+.counterMessages {
+  background-color: aqua;
+  border-radius: 12.5px;
+  margin-bottom: 5px;
+  width: 25px;
+  margin: 0 auto;
+  float: left;
+  text-align: center;
+}

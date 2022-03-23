@@ -1,0 +1,142 @@
+<div>
+  <h2 id="page-heading" data-cy="IdeaHeading">
+    <span jhiTranslate="createyourideasApp.idea.home.title">Ideas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="createyourideasApp.idea.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-idea"
+        [routerLink]="['/create-idea']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="createyourideasApp.idea.home.createLabel"> Create a new Idea </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ideas?.length === 0">
+    <span jhiTranslate="createyourideasApp.idea.home.notFound">No ideas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="ideas && ideas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="title">
+            <span jhiTranslate="createyourideasApp.idea.title">Title</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="logo">
+            <span jhiTranslate="createyourideasApp.idea.logo">Logo</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="interest">
+            <span jhiTranslate="createyourideasApp.idea.interest">Interest</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="distribution">
+            <span jhiTranslate="createyourideasApp.idea.distribution">Distribution</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th>
+            <span jhiTranslate="createyourideasApp.idea.idea">Idea</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col">Active</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let idea of ideas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/idea', idea.id, 'view']">{{ idea.id }}</a>
+          </td>
+          <td>{{ idea.title }}</td>
+          <td>
+            <a *ngIf="idea.logo" (click)="openFile(idea.logo, idea.logoContentType)">
+              <img [src]="'data:' + idea.logoContentType + ';base64,' + idea.logo" style="max-height: 30px" alt="idea image" />
+            </a>
+          </td>
+          <td>{{ idea.interest | percent }}</td>
+          <td>{{ idea.distribution | percent }}</td>
+          <td>
+            <div *ngIf="idea.idea">
+              <a [routerLink]="['/ideas', idea.idea?.id, 'view']">{{ idea.idea?.title }}</a>
+            </div>
+          </td>
+          <ng-container *ngIf="idea.active">
+            <i class="pi pi-check" style="font-size: 2rem"></i>
+          </ng-container>
+          <ng-container *ngIf="!idea.active">
+            <i class="pi pi-times" style="font-size: 2rem"></i>
+          </ng-container>
+          <td></td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/ideas', idea.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/ideas', idea.id, 'edit']" class="btn btn-danger btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/dashboard', idea.id, 'view']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="money-bill"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="idea-list.finance-accounting">Finance/Accounting</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/ideas', idea.id, 'employee-management']" class="btn btn-info btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="user"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="idea-list.employee-management">Employee management</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/dashboard/config', idea.id, 'view']" class="btn btn-warning btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="idea-list.dashboard">Dashboard</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/ideas', idea.id, 'billing']" class="btn btn-dark btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="wallet"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="idea-list.billing">Billing</span>
+              </button>
+
+              <!--
+              <button type="submit" (click)="delete(idea)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+              -->
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="ideas && ideas.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+<h1><span jhiTranslate="">Worksheets for idea:</span> {{ idea.title }}</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+      <p-card>
+          <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2
+              id="jhi-worksheet-heading"
+              data-cy="WorksheetCreateUpdateHeading"
+              jhiTranslate="createyourideasApp.worksheet.home.createOrEditLabel"
+            >
+              Create or edit a Worksheet
+            </h2>
+
+            <div>
+              <jhi-alert-error></jhi-alert-error>
+
+              <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+                <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+                <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.jobtitle" for="field_jobtitle">Jobtitle</label>
+                <input type="text" class="form-control" name="jobtitle" id="field_jobtitle" data-cy="jobtitle" formControlName="jobtitle" />
+                <div *ngIf="editForm.get('jobtitle')!.invalid && (editForm.get('jobtitle')!.dirty || editForm.get('jobtitle')!.touched)">
+                  <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('jobtitle')?.errors?.required"
+                    jhiTranslate="entity.validation.required"
+                  >
+                    This field is required.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.jobdescription" for="field_jobdescription"
+                  >Jobdescription</label
+                >
+                <textarea
+                  class="form-control"
+                  name="jobdescription"
+                  id="field_jobdescription"
+                  data-cy="jobdescription"
+                  formControlName="jobdescription"
+                ></textarea>
+                <div
+                  *ngIf="
+                    editForm.get('jobdescription')!.invalid && (editForm.get('jobdescription')!.dirty || editForm.get('jobdescription')!.touched)
+                  "
+                >
+                  <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('jobdescription')?.errors?.required"
+                    jhiTranslate="entity.validation.required"
+                  >
+                    This field is required.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.dateStart" for="field_dateStart">Date Start</label>
+                <div class="d-flex">
+                  <input
+                    id="field_dateStart"
+                    data-cy="dateStart"
+                    type="datetime-local"
+                    class="form-control"
+                    name="dateStart"
+                    formControlName="dateStart"
+                    placeholder="YYYY-MM-DD HH:mm"
+                  />
+                </div>
+                <div
+                *ngIf="
+                  editForm.get('dateStart')!.invalid && (editForm.get('dateStart')!.dirty || editForm.get('dateStart')!.touched)
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('dateStart')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.dateEnd" for="field_dateEnd">Date End</label>
+                <div class="d-flex">
+                  <input
+                    id="field_dateEnd"
+                    data-cy="dateEnd"
+                    type="datetime-local"
+                    class="form-control"
+                    name="dateEnd"
+                    formControlName="dateEnd"
+                    placeholder="YYYY-MM-DD HH:mm"
+                  />
+                </div>
+                <div
+                *ngIf="
+                  editForm.get('dateEnd')!.invalid && (editForm.get('dateEnd')!.dirty || editForm.get('dateEnd')!.touched)
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="editForm.get('dateEnd')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.costHour" for="field_costHour">Cost Hour</label>
+                <input type="number" class="form-control" name="costHour" id="field_costHour" data-cy="costHour" formControlName="costHour" />
+                <div *ngIf="editForm.get('costHour')!.invalid && (editForm.get('costHour')!.dirty || editForm.get('costHour')!.touched)">
+                  <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('costHour')?.errors?.required"
+                    jhiTranslate="entity.validation.required"
+                  >
+                    This field is required.
+                  </small>
+                  <small
+                    class="form-text text-danger"
+                    [hidden]="!editForm.get('costHour')?.errors?.number"
+                    jhiTranslate="entity.validation.number"
+                  >
+                    This field should be a number.
+                  </small>
+                </div>
+              </div>
+            <div>
+              <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+                <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button>
+
+              <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary"
+              >
+                <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+              </button>
+            </div>
+          </div>
+      </form>
+    </p-card>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+      <p-card header="Worksheets">
+
+        <p-table #dt1 [value]="worksheets" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['jobtitle','jobdescription','dateStart','dateEnd' ,'costHour','hours', 'total']">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Jobtitle
+                        <p-columnFilter type="text" field="jobtitle" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Jobdescription
+                        <p-columnFilter type="text" field="jobdescription" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Date from:
+                        <p-columnFilter type="date" field="dateStart" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                  <div class="p-d-flex p-jc-between p-ai-center">
+                      Date until:
+                      <p-columnFilter type="date" field="dateEnd" display="menu"></p-columnFilter>
+                  </div>
+              </th>
+                <th>
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Hourly coasts
+                        <p-columnFilter type="numeric" field="coastHour" display="menu" currency="CHF"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                  <div class="p-d-flex p-jc-between p-ai-center">
+                      Duration
+                      <p-columnFilter type="numeric" field="hours" display="menu" currency="CHF"></p-columnFilter>
+                  </div>
+              </th>
+              <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Total
+                    <p-columnFilter type="numeric" field="total" display="menu" currency="USD"></p-columnFilter>
+                </div>
+            </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-worksheet>
+            <tr>
+                <td>
+                    {{worksheet.jobtitle}}
+                </td>
+                <td>
+                  {{worksheet.jobdescription}}
+                </td>
+                <td>
+                {{worksheet.dateStart | date: 'medium'}}
+                </td>
+                <td>
+                    {{worksheet.dateEnd | date: 'medium'}}
+                </td>
+                <td>
+                    {{worksheet.costHour | currency}}
+                </td>
+                <td>
+                    {{worksheet.hours}}
+                </td>
+                <td>
+                    {{worksheet.total | currency}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No worksheet found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    </p-card>
+		</div>
+	</div>
+</div>

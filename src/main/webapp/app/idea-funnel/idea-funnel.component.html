@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <div class="row">
+		<div class="col-md-6">
+      <h1>
+        Welcome to {{ title }}!
+      </h1>
+		</div>
+		<div class="col-md-6">
+      <jhi-base_rate></jhi-base_rate>
+		</div>
+	</div>
+  </div>
+  <button (click)="zoomIn()">Zoom in</button>
+  <button (click)="zoomOut()">Zoom out</button>
+  <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
+    <button id="calculateProfit" (click)="calculateProfit()">Calculate Profit</button>
+  </div>
+  <div id="jsmind_container"></div>

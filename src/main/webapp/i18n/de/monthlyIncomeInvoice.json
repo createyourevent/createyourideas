@@ -1,0 +1,26 @@
+{
+  "createyourideasApp": {
+    "monthlyIncomeInvoice": {
+      "home": {
+        "title": "Monthly Income Invoices",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Monthly Income Invoice erstellen",
+        "createOrEditLabel": "Monthly Income Invoice erstellen oder bearbeiten",
+        "notFound": "Keine Monthly Income Invoices gefunden"
+      },
+      "created": "Monthly Income Invoice erstellt mit ID {{ param }}",
+      "updated": "Monthly Income Invoice aktualisiert mit ID {{ param }}",
+      "deleted": "Monthly Income Invoice gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Monthly Income Invoice {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Monthly Income Invoice"
+      },
+      "id": "ID",
+      "total": "Total",
+      "date": "Date",
+      "idea": "Idea"
+    }
+  }
+}

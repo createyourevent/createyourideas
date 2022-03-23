@@ -1,0 +1,31 @@
+<p-toast></p-toast>
+<ng-container *ngIf="value <= 0">
+    <div class="alert alert-warning" role="alert">
+        <span jhiTranslate="payment.insert-donation">Please insert a donation higher then 10 CHF.</span>
+      </div>
+</ng-container>
+<ng-container *ngIf="value > 0">
+        <mat-toolbar color="secondary" section-content-header class="card-toolbar">
+          <h3 class="bold"><span jhiTranslate="payment.donation-terminal">Datatrans Terminal</span></h3>
+        </mat-toolbar>
+        <datatrans-component [transactionId]="value | transactionId: type : id | async" (onLoaded)="onLoaded($event)" (onOpened)="onOpened($event)" (onCancelled)="onCancelled($event)" (onError)="onError($event)"></datatrans-component>
+      <hr/>
+      <div class="container-fluid">
+        <div class="row logo_payment">
+          <div class="col-md-2">
+            <img src="../../../content/images/payment_logo/ssl.png"/>
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+</ng-container>

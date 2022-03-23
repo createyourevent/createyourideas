@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="outgoings">
+      <h2 data-cy="outgoingsDetailsHeading"><span jhiTranslate="createyourideasApp.outgoings.detail.title">Outgoings</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ outgoings.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.title">Title</span></dt>
+        <dd>
+          <span>{{ outgoings.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.description">Description</span></dt>
+        <dd>
+          <span>{{ outgoings.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.date">Date</span></dt>
+        <dd>
+          <span>{{ outgoings.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.value">Value</span></dt>
+        <dd>
+          <span>{{ outgoings.value }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.billed">Billed</span></dt>
+        <dd>
+          <span>{{ outgoings.billed }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.toChildIdea">To Child Idea</span></dt>
+        <dd>
+          <span>{{ outgoings.toChildIdea }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.auto">Auto</span></dt>
+        <dd>
+          <span>{{ outgoings.auto }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.outgoingIdeas">Outgoing Ideas</span></dt>
+        <dd>
+          <span *ngFor="let outgoingIdeas of outgoings.outgoingIdeas; let last = last">
+            <a [routerLink]="['/idea', outgoingIdeas?.id, 'view']">{{ outgoingIdeas.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.outgoings.idea">Idea</span></dt>
+        <dd>
+          <div *ngIf="outgoings.idea">
+            <a [routerLink]="['/idea', outgoings.idea?.id, 'view']">{{ outgoings.idea?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/outgoings', outgoings.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

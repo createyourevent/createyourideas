@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-title><h2 class="bold">Create worksheet</h2></mat-card-title>
+  <mat-card-subtitle><h3>Create an worksheet for this idea</h3></mat-card-subtitle>
+  <mat-card-content>
+    <span>Create worksheet for</span> {{ idea.title }}
+
+    <div>
+      <form [formGroup]="form">
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+        <hr/>
+        <button (click)="onSubmit(model)" class="btn btn-primary submit-button"  [disabled]="isAdding">Submit</button>
+        <button type="button" class="btn btn-default" (click)="options.resetModel()"  [disabled]="isAdding">Reset</button>
+      </form>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+<br>
+
+<mat-card>
+  <mat-card-title><h2 class="bold">All worksheets</h2></mat-card-title>
+  <mat-card-subtitle><h3>All worksheets in a table</h3></mat-card-subtitle>
+  <mat-card-content>
+
+    <p-table #dt1 [value]="worksheets" dataKey="id"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['title','description','date','value']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Job title
+                    <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Job description
+                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Date start
+                    <p-columnFilter type="date" field="dateStart" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Date end
+                    <p-columnFilter type="date" field="dateEnd" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Cost per hour
+                  <p-columnFilter type="numeric" field="costHour" display="menu" currency="CHF"></p-columnFilter>
+              </div>
+          </th>
+          <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Total
+                <p-columnFilter type="numeric" field="total" display="menu" currency="CHF"></p-columnFilter>
+            </div>
+        </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-worksheet>
+        <tr>
+            <td>
+                {{ worksheet.jobtitle }}
+            </td>
+            <td>
+                {{ worksheet.jobdescription }}
+            </td>
+            <td>
+                {{worksheet.dateStart | date: 'medium'}}
+            </td>
+            <td>
+              {{worksheet.dateEnd | date: 'medium'}}
+            </td>
+            <td>
+                {{ worksheet.costHour | currency }}
+            </td>
+            <td>
+              {{ worksheet.total | currency }}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7">No worksheets found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+<hr/>
+<h3 class="bold"><span>Total</span> {{ getTotalWorksheets() | currency }}</h3>
+  </mat-card-content>
+</mat-card>

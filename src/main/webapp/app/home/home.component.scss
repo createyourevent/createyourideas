@@ -1,0 +1,62 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.hipster {
+  display: inline-block;
+  width: 347px;
+  height: 497px;
+  background-size: contain;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .hipster {
+    background-size: contain;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.margin-10 {
+  margin: 20px;
+}
+
+.box{
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.imagediv {
+  height: 220px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.p-card {
+  height: 700px;
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 2px rgba(240,183,161,0.8);
+}
+
+.chart {
+  height: 270px;
+}
+
+.padding-150 {
+  padding-top: 150px;
+}
+
+.fredoka {
+  font-family: 'Fredoka One', cursive;
+}

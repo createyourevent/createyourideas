@@ -1,0 +1,39 @@
+{
+  "name": "Balance",
+  "fields": [
+    {
+      "fieldName": "dailyBalance",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "netProfit",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "billed",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "balances",
+      "relationshipName": "idea"
+    }
+  ],
+  "entityTableName": "balance",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211026180638"
+}

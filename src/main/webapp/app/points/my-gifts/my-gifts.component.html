@@ -1,0 +1,33 @@
+<h1 class="monoton" jhiTranslate="my-gifts.title">My gifts</h1>
+
+<div class="alert alert-primary" role="alert">
+    <span jhiTranslate="my-gifts.info">
+        Below you can see all the gifts that you have already exchanged for points.
+    </span>
+</div>
+
+<ng-container *ngIf="carts">
+  <div class="box_green">
+    <ng-container *ngFor="let cart of carts">
+        <p-card class="card">
+            <ng-template pTemplate="header">
+
+            </ng-template>
+            <dl class="row-md jh-entity-details">
+                <div class="img">
+                    <img [src]="'data:' + cart.gift!.photoContentType + ';base64,' + cart.gift!.photo" style="max-width: 250px;" alt="gift image"/>
+                </div>
+
+                <h3><span>{{ cart.gift!.title }}</span></h3>
+
+                <dd>
+                    <span>{{ cart.gift!.description }}</span>
+                </dd>
+            </dl>
+            <ng-template pTemplate="footer">
+            </ng-template>
+        </p-card>
+    </ng-container>
+    <div class="clear"></div>
+ </div>
+</ng-container>

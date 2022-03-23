@@ -1,0 +1,44 @@
+{
+  "name": "Employee",
+  "fields": [
+    {
+      "fieldName": "hourlyWages",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "worksheet",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "worksheets"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "ideas",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "employee",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211107081727"
+}

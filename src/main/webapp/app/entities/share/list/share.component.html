@@ -1,0 +1,70 @@
+<div>
+  <h2 id="page-heading" data-cy="ShareHeading">
+    <span jhiTranslate="createyourideasApp.share.home.title">Shares</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="createyourideasApp.share.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-share"
+        [routerLink]="['/share/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="createyourideasApp.share.home.createLabel"> Create a new Share </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="shares?.length === 0">
+    <span jhiTranslate="createyourideasApp.share.home.notFound">No shares found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="shares && shares.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.share.value">Value</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.share.date">Date</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let share of shares; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/share', share.id, 'view']">{{ share.id }}</a>
+          </td>
+          <td>{{ share.value }}</td>
+          <td>{{ share.date | formatMediumDatetime }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/share', share.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/share', share.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(share)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

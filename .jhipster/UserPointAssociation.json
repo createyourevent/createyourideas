@@ -1,0 +1,33 @@
+{
+  "name": "UserPointAssociation",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "point",
+      "otherEntityRelationshipName": "userPointAssociation",
+      "relationshipName": "points"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userPointAssociation",
+      "relationshipName": "users"
+    }
+  ],
+  "entityTableName": "user_point_association",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211026180644"
+}

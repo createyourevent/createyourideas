@@ -1,0 +1,26 @@
+{
+  "createyourideasApp": {
+    "monthlyIncomeInvoice": {
+      "home": {
+        "title": "Monthly Income Invoices",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Monthly Income Invoice",
+        "createOrEditLabel": "Create or edit a Monthly Income Invoice",
+        "notFound": "No Monthly Income Invoices found"
+      },
+      "created": "A new Monthly Income Invoice is created with identifier {{ param }}",
+      "updated": "A Monthly Income Invoice is updated with identifier {{ param }}",
+      "deleted": "A Monthly Income Invoice is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Monthly Income Invoice {{ id }}?"
+      },
+      "detail": {
+        "title": "Monthly Income Invoice"
+      },
+      "id": "ID",
+      "total": "Total",
+      "date": "Date",
+      "idea": "Idea"
+    }
+  }
+}

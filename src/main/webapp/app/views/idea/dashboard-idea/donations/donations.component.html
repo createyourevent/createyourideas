@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-title><h2 class="bold">All donations</h2></mat-card-title>
+  <mat-card-subtitle><h3>All donations in a table</h3></mat-card-subtitle>
+  <mat-card-content>
+
+    <p-table #dt1 [value]="donations" dataKey="id"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['user.firstName','user.lastName','date','amount']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Donator firstname
+                    <p-columnFilter type="text" field="user.firstName" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Donator lastname
+                    <p-columnFilter type="text" field="user.lastName" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Date
+                    <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Amount
+                  <p-columnFilter type="numeric" field="amount" display="menu"></p-columnFilter>
+              </div>
+          </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-donation>
+        <tr>
+            <td>
+                {{ donation.user.firstName }}
+            </td>
+            <td>
+                {{ donation.user.lastName }}
+            </td>
+            <td>
+                {{donation.date | date: 'medium'}}
+            </td>
+            <td>
+              {{ donation.amount | currency }}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7">No donation found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+<hr/>
+<h3 class="bold"><span>Total</span> {{ getTotalDonations() | currency }}</h3>
+  </mat-card-content>
+</mat-card>

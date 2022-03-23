@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="IdeaCommentHeading">
+    <span jhiTranslate="createyourideasApp.ideaComment.home.title">Idea Comments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="createyourideasApp.ideaComment.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-idea-comment"
+        [routerLink]="['/idea-comment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="createyourideasApp.ideaComment.home.createLabel"> Create a new Idea Comment </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ideaComments?.length === 0">
+    <span jhiTranslate="createyourideasApp.ideaComment.home.notFound">No ideaComments found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="ideaComments && ideaComments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.ideaComment.comment">Comment</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.ideaComment.date">Date</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.ideaComment.idea">Idea</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.ideaComment.user">User</span></th>
+          <th scope="col"><span jhiTranslate="createyourideasApp.ideaComment.ideaComment">Idea Comment</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ideaComment of ideaComments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/idea-comment', ideaComment.id, 'view']">{{ ideaComment.id }}</a>
+          </td>
+          <td>{{ ideaComment.comment }}</td>
+          <td>{{ ideaComment.date | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="ideaComment.idea">
+              <a [routerLink]="['/idea', ideaComment.idea?.id, 'view']">{{ ideaComment.idea?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ ideaComment.user?.id }}
+          </td>
+          <td>
+            <div *ngIf="ideaComment.ideaComment">
+              <a [routerLink]="['/idea-comment', ideaComment.ideaComment?.id, 'view']">{{ ideaComment.ideaComment?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/idea-comment', ideaComment.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/idea-comment', ideaComment.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ideaComment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

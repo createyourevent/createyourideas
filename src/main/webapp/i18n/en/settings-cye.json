@@ -1,0 +1,14 @@
+{
+  "settings-cye": {
+    "phone": "Phone",
+    "iban": "IBAN",
+    "phone-required": "Phone required",
+    "iban-required": "IBAN required",
+    "iban-invalid": "IBAN invalid",
+    "iban-valid": "IBAN valid",
+    "bankname": "Bankname",
+    "bankaddress": "Bankadress",
+    "bankname-required": "Bankname required",
+    "bank-infos": "Banking informations"
+  }
+}

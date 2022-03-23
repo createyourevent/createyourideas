@@ -1,0 +1,48 @@
+svg {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  display: block;}
+
+.small {
+  fill: #900;}
+
+.medium-shadow, .large-shadow {
+  fill: rgba(0, 0, 0, 0.6);}
+
+.small-shadow {
+  fill: rgba(40, 0, 0, 0.9);}
+
+.small {
+  animation: counter-rotation 5s infinite linear;
+  transform-origin: 100.136px 225.345px;}
+
+.small-shadow {
+  animation: counter-rotation 5s infinite linear;
+  transform-origin: 110.136px 235.345px;}
+
+.medium {
+  animation: rotation 7.5s infinite linear;
+  transform-origin: 254.675px 379.447px;}
+
+.medium-shadow {
+  animation: rotation 7.5s infinite linear;
+  transform-origin: 264.675px 389.447px;}
+
+.large {
+  animation: counter-rotation 10s infinite linear;
+  transform-origin: 461.37px 173.694px;}
+
+.large-shadow {
+  animation: counter-rotation 10s infinite linear;
+  transform-origin: 471.37px 183.694px;}
+
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
+}
+
+@keyframes counter-rotation {
+    from {transform: rotate(359deg);}
+    to   {transform: rotate(0deg);}
+}

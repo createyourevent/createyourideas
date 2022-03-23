@@ -1,0 +1,9 @@
+{
+  "donation-page": {
+    "title": "Donation",
+    "page-title": "Donation for",
+    "thanks": "Thanks for your donation",
+    "donate": "Donate ",
+    "insert-donation": "Please enter a donation above, or press an amount above the donation buttons."
+  }
+}

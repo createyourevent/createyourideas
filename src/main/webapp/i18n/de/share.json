@@ -1,0 +1,25 @@
+{
+  "createyourideasApp": {
+    "share": {
+      "home": {
+        "title": "Shares",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Share erstellen",
+        "createOrEditLabel": "Share erstellen oder bearbeiten",
+        "notFound": "Keine Shares gefunden"
+      },
+      "created": "Share erstellt mit ID {{ param }}",
+      "updated": "Share aktualisiert mit ID {{ param }}",
+      "deleted": "Share gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Share {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Share"
+      },
+      "id": "ID",
+      "value": "Value",
+      "date": "Date"
+    }
+  }
+}

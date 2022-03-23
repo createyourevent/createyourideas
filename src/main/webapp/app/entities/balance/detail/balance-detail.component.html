@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="balance">
+      <h2 data-cy="balanceDetailsHeading"><span jhiTranslate="createyourideasApp.balance.detail.title">Balance</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ balance.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.balance.dailyBalance">Daily Balance</span></dt>
+        <dd>
+          <span>{{ balance.dailyBalance }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.balance.netProfit">Net Profit</span></dt>
+        <dd>
+          <span>{{ balance.netProfit }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.balance.date">Date</span></dt>
+        <dd>
+          <span>{{ balance.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.balance.billed">Billed</span></dt>
+        <dd>
+          <span>{{ balance.billed }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.balance.idea">Idea</span></dt>
+        <dd>
+          <div *ngIf="balance.idea">
+            <a [routerLink]="['/idea', balance.idea?.id, 'view']">{{ balance.idea?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/balance', balance.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

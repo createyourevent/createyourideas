@@ -1,0 +1,29 @@
+{
+  "createyourideasApp": {
+    "ideaComment": {
+      "home": {
+        "title": "Idea Comments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Idea Comment",
+        "createOrEditLabel": "Create or edit a Idea Comment",
+        "notFound": "No Idea Comments found"
+      },
+      "created": "A new Idea Comment is created with identifier {{ param }}",
+      "updated": "A Idea Comment is updated with identifier {{ param }}",
+      "deleted": "A Idea Comment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Idea Comment {{ id }}?"
+      },
+      "detail": {
+        "title": "Idea Comment"
+      },
+      "id": "ID",
+      "comment": "Comment",
+      "date": "Date",
+      "ideaComments": "Idea Comments",
+      "idea": "Idea",
+      "user": "User",
+      "ideaComment": "Idea Comment"
+    }
+  }
+}

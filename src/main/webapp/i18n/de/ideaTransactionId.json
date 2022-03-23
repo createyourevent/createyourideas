@@ -1,0 +1,27 @@
+{
+  "createyourideasApp": {
+    "ideaTransactionId": {
+      "home": {
+        "title": "Idea Transaction Ids",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Idea Transaction Id erstellen",
+        "createOrEditLabel": "Idea Transaction Id erstellen oder bearbeiten",
+        "notFound": "Keine Idea Transaction Ids gefunden"
+      },
+      "created": "Idea Transaction Id erstellt mit ID {{ param }}",
+      "updated": "Idea Transaction Id aktualisiert mit ID {{ param }}",
+      "deleted": "Idea Transaction Id gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Idea Transaction Id {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Idea Transaction Id"
+      },
+      "id": "ID",
+      "transactionId": "Transaction Id",
+      "refNo": "Ref No",
+      "date": "Date",
+      "idea": "Idea"
+    }
+  }
+}

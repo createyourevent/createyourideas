@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="point">
+      <h2 data-cy="pointDetailsHeading"><span jhiTranslate="createyourideasApp.point.detail.title">Point</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ point.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.key">Key</span></dt>
+        <dd>
+          <span>{{ point.key }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.name">Name</span></dt>
+        <dd>
+          <span>{{ point.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.keyName">Key Name</span></dt>
+        <dd>
+          <span>{{ point.keyName }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.description">Description</span></dt>
+        <dd>
+          <span>{{ point.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.keyDescription">Key Description</span></dt>
+        <dd>
+          <span>{{ point.keyDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.category">Category</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'createyourideasApp.PointsCategory.' + point.category }}">{{ point.category }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.points">Points</span></dt>
+        <dd>
+          <span>{{ point.points }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.countPerDay">Count Per Day</span></dt>
+        <dd>
+          <span>{{ point.countPerDay }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.point.creationDate">Creation Date</span></dt>
+        <dd>
+          <span>{{ point.creationDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/point', point.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Application</h1>
+    <p>
+      Down you will see all applications for this idea.
+    </p>
+    <p-table #dt1 [value]="applications" dataKey="id"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['user.firstName','user.lastName','date','title','description']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Firstname
+                    <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Lastname
+                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                  Date
+                  <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+              </div>
+          </th>
+          <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Title
+                <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Description
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+              Seen
+              <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+          </div>
+      </th>
+      <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+              Responded
+              <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+          </div>
+      </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-application>
+        <tr>
+            <td>
+                {{application.user.firstName}}
+            </td>
+            <td>
+              {{application.user.lastName}}
+          </td>
+          <td>
+            {{application.date | date: 'medium'}}
+           </td>
+           <td>
+            {{application.title}}
+        </td>
+        <td>
+          {{application.description}}
+      </td>
+            <td>
+              <p-inputSwitch [(ngModel)]="application.seen" (onChange)="handleSeen($event, application)" [disabled]="application.seen"></p-inputSwitch>
+            </td>
+            <td>
+              <p-triStateCheckbox [(ngModel)]="application.responded" (onChange)="handleResponded($event, application)" [disabled]="!application.seen" label="Hire"></p-triStateCheckbox>
+          </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7">No appllication found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Employees</h1>
+    <p>
+      Down you will see all employees for this idea.
+    </p>
+    <p-table #dt1 [value]="employees" dataKey="id"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['user.firstName','user.lastName']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Firstname
+                    <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Lastname
+                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                </div>
+            </th>
+          <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Action
+                <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+        <tr>
+            <td>
+                {{employee.user.firstName}}
+            </td>
+            <td>
+              {{employee.user.lastName}}
+          </td>
+           <td>
+             <button pButton type="button" icon="pi pi-minus" iconPos="right" (click)="fire(application.user)">Fire</button>
+           </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="4">No employee found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+  </div>
+</div>

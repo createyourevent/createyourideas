@@ -1,0 +1,46 @@
+<div>
+  <jhi-page-ribbon></jhi-page-ribbon>
+
+  <div ngStickyNav class="sticky">
+    <router-outlet name="navbar"></router-outlet>
+    <div class="ticker">
+      <div class="ticker-title">
+        ++Newest ideas++ ++Newest ideas++ ++Newest ideas++
+      </div>
+      <marquee class="display"  direction="left"  width="100%">
+          <ng-container *ngFor="let idea of ideas">
+            ++<a class="ideaLink" [routerLink]="['/ideas', idea.id, 'view']">{{idea.title}}</a>++
+          </ng-container>
+      </marquee>
+    </div>
+  </div>
+
+  <ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+    <div class="wrapBanner">
+      <div class="row">
+        <div class="col-md-4 base_rate">
+          <jhi-base_rate></jhi-base_rate>
+        </div>
+        <div class="col-md-4">
+          <jhi-points-display></jhi-points-display>
+        </div>
+        <div class="col-md-3">
+          <jhi-chat-notification></jhi-chat-notification>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="container-fluid">
+    <div class="card jh-card">
+      <router-outlet></router-outlet>
+    </div>
+    <jhi-footer></jhi-footer>
+  </div>
+</div>
+
+<ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+  <jhi-chat></jhi-chat>
+</ng-container>
+
+<jhi-docker-apps></jhi-docker-apps>

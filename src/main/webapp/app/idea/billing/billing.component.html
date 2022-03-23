@@ -1,0 +1,121 @@
+<p-card *ngIf="parentIdea">
+  <p>
+    Below you can see how much interest you have to give to the parent idea. This value is calculated once a month based on all daily balances for the month.
+  </p>
+  <h3><span>Interest from</span> {{ idea.title }} <span>to</span> {{ parentIdea.title }}</h3>
+
+  <p-table [value]="allInterestToParent" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Title
+                <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Description
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Date
+                <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Value
+                <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter>
+            </div>
+        </th>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-income>
+      <tr>
+        <td>
+            {{ income.title }}
+        </td>
+        <td>
+            {{ income.description }}
+        </td>
+        <td>
+            {{income.date | date: 'medium'}}
+        </td>
+        <td>
+            {{ income.value | currency:'CHF':'symbol'}}
+        </td>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-table>
+  <h3><span>Total: </span>{{ allInterestToParentTotal | currency }}</h3>
+</p-card>
+
+<p-card>
+  <p>
+    Below you can see how much distribution you have to pay to your child ideas. This value is calculated once a month based on all daily balances for the month.
+  </p>
+  <p-table [value]="allDistributionsToChild" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Title
+                <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Description
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Date
+                <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Value
+                <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter>
+            </div>
+        </th>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-income>
+      <tr>
+        <td>
+            {{ income.title }}
+        </td>
+        <td>
+            {{ income.description }}
+        </td>
+        <td>
+            {{income.date | date: 'medium'}}
+        </td>
+        <td>
+            {{ income.value | currency:'CHF':'symbol'}}
+        </td>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-table>
+  <h3><span>Total: </span>{{ allDistributionsToChildTotal | currency }}</h3>
+</p-card>

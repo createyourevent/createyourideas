@@ -1,0 +1,82 @@
+<div class="box">
+    <h4 jhiTranslate="comment-box.feedbacks-and-comments">Feedbacks and comments</h4>
+    <hr/>
+        <textarea [rows]="5" [cols]="100" pInputTextarea [autoResize]="true" [formControl]="textareaInput"></textarea>
+        <div *ngIf="textareaInput.invalid && (textareaInput.dirty || textareaInput.touched)" class="alert alert-danger" role="alert">
+            <div jhiTranslate="comment-box.comment-invalid">Please give a feedback</div>
+        </div>
+    <button  class="btn btn-info" (click)="saveComment()" [disabled]="(!textareaInput.valid)">
+        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="comment-box.save">Save</span>
+    </button>
+    <hr/>
+    <!--
+    <p>
+        <div class="feedback">
+            <ul class="user_comment">
+                <li *ngFor="let comment of comments">
+                    <div class="comment">
+                        {{ comment.comment }}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </p>
+    -->
+    <ng-container *ngFor="let comment of comments">
+        <div class="row">
+          <!--
+            <div class="col-sm-1">
+                <div class="thumbnail">
+                    <img class="img-responsive user-photo" src="{{ comment.user.imageUrl }}">
+                </div>
+            </div>
+            -->
+            <div class="col-sm-8">
+                <div class="panel panel-default" *ngIf="comment.ideaComment === null">
+                    <div class="panel-heading">
+                        <ng-container *ngIf="comment.user.id !== userLoggedIn.id">
+                            <a (click)="clickUserName(comment.user)"><span class="bold">{{ comment.user.firstName }} {{ comment.user.lastName }}</span></a> <span class="text-muted">{{ comment.date | date:'mediumDate' }}</span>
+                        </ng-container>
+                        <ng-container *ngIf="comment.user.id === userLoggedIn.id">
+                            <span class="bold">{{ comment.user.firstName }} {{ comment.user.lastName }}</span> <span class="text-muted">{{ comment.date | date:'mediumDate' }}</span>
+                        </ng-container>
+                    </div>
+                    <div class="panel-body">
+                        {{ comment.comment }}
+                    </div>
+                    <div div class="panel-footer">
+                        <p-overlayPanel #op [dismissable]="true" [showCloseIcon]="true"  appendTo="body">
+                          <ng-template pTemplate>
+                            <textarea [rows]="5" [cols]="100" pInputTextarea [autoResize]="true" [formControl]="answerInput"></textarea>
+                            <div *ngIf="answerInput.invalid && (answerInput.dirty || answerInput.touched)" class="alert alert-danger" role="alert">
+                                <div jhiTranslate="comment-box.answer-invalid">Please give a answer</div>
+                            </div>
+                          <button  class="btn btn-info" (click)="clickAnswer(comment.id)" [disabled]="(!answerInput.valid)">
+                              <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="comment-box.save">Save</span>
+                          </button>
+                          </ng-template>
+                      </p-overlayPanel>
+                      <button pButton (click)="op.toggle($event)"><span class="bold" jhiTranslate="comment-box.answer">Answer</span></button>
+                    </div>
+                </div>
+                <ng-container *ngIf="comment.ideaComments">
+                  <ng-container *ngFor="let answer of comment.ideaComments">
+                    <div class="panel-answer panel-default">
+                      <div class="panel-answer-heading">
+                          <ng-container *ngIf="answer.user.id !== userLoggedIn.id">
+                              <a (click)="clickUserName(answer.user)"><span class="bold">{{ answer.user.firstName }} {{ answer.user.lastName }}</span></a> <span class="text-muted">{{ answer.date | date:'mediumDate' }}</span>
+                          </ng-container>
+                          <ng-container *ngIf="answer.user.id === userLoggedIn.id">
+                              <span class="bold">{{ answer.user.firstName }} {{ answer.user.lastName }}</span> <span class="text-muted">{{ answer.date | date:'mediumDate' }}</span>
+                          </ng-container>
+                      </div>
+                      <div class="panel-body">
+                          {{ answer.comment }}
+                      </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+        </div>
+    </ng-container>
+</div>

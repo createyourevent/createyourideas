@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userPointAssociation">
+      <h2 data-cy="userPointAssociationDetailsHeading">
+        <span jhiTranslate="createyourideasApp.userPointAssociation.detail.title">User Point Association</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userPointAssociation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.userPointAssociation.date">Date</span></dt>
+        <dd>
+          <span>{{ userPointAssociation.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.userPointAssociation.points">Points</span></dt>
+        <dd>
+          <div *ngIf="userPointAssociation.points">
+            <a [routerLink]="['/point', userPointAssociation.points?.id, 'view']">{{ userPointAssociation.points?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.userPointAssociation.users">Users</span></dt>
+        <dd>
+          <span>{{ userPointAssociation.users?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-point-association', userPointAssociation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

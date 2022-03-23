@@ -1,0 +1,141 @@
+<div class="green_box_1">
+  <div class="alert alert-info" role="alert">
+    <span jhiTranslate="createyourideas.idea-pinwall.active-ideas">
+      Select below which idea you would like to see the description and characteristics of.
+      The ideas in this selection are active, that is, they are shown in the idea funnel and included in the calculations.
+    </span>
+  </div>
+
+  <div class="row">
+      <div class="col-md-12">
+        <label for="activeIdeas" jhiTranslate="createyourideas.idea-pinwall.active-ideas">Select active idea</label>
+        <ngx-select-dropdown  (change)="onChangeActive($event)" id="activeIdeas" name="activeIdeas" tabindex="0" [multiple]="false" [(ngModel)]="selectedActiveIdea" [config]="configActiveIdeas" [options]="activeIdeas"></ngx-select-dropdown>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.investment">Investment</span></h3>
+          <span>{{selectedActiveIdea.investment | currency}}</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.interest">Interest</span></h3>
+          <span>{{selectedActiveIdea.interest | percent}}</span>
+         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.distribution">Distribution</span></h3>
+          <span>{{selectedActiveIdea.distribution | percent}}</span>
+         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.title">Title</span></h3>
+          <div [innerHTML]="selectedActiveIdea.title"></div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.description">Description</span></h3>
+          <div [innerHTML]="selectedActiveIdea.description"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box center" *ngIf="selectedActiveIdea.logo !== undefined">
+          <a (click)="openFile(selectedActiveIdea.logoContentType, selectedActiveIdea.logo)">
+              <img [src]="'data:' + selectedActiveIdea.logoContentType + ';base64,' + selectedActiveIdea.logo" style="max-width: 350px;" [alt]="selectedActiveIdea.title"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="donationActive">
+         <div *jhiHasAnyAuthority="'ROLE_USER'">
+            <a class="donation float_link" href="/ideas/{{ selectedActiveIdea.id }}/donation">{{ 'mind-map-node.donation' | translate }}</a>
+          </div>
+          <a class="donation goto-profile float_link" href="/ideas/{{ selectedActiveIdea.id }}/view">{{ 'mind-map-node.goto-profile' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="green_box_1">
+    <div class="alert alert-info" role="alert">
+      <span jhiTranslate="createyourideas.idea-pinwall.new-ideas">
+        Select below which idea you would like to see the description and characteristics of.
+        The ideas in this selection are still inactive, that is, they are not yet shown in the idea funnel and not included in the calculations.
+      </span>
+    </div>
+
+  <div class="row">
+      <div class="col-md-12">
+        <label for="inactiveIdeas" jhiTranslate="createyourideas.idea-pinwall.inactive-ideas">Select new idea</label>
+        <ngx-select-dropdown  (change)="onChangeInActive($event)" id="inactiveIdeas" name="inactiveIdeas" [multiple]="false" [(ngModel)]="selectedInActiveIdea" [config]="configInActiveIdeas" [options]="newIdeas"></ngx-select-dropdown>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.investment">Investment</span></h3>
+          <span>{{selectedInActiveIdea.investment | currency}}</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.interest">Interest</span></h3>
+          <span>{{selectedInActiveIdea.interest | percent}}</span>
+         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.distribution">Distribution</span></h3>
+          <span>{{selectedInActiveIdea.distribution | percent}}</span>
+         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.title">Title</span></h3>
+          <div [innerHTML]="selectedInActiveIdea.title"></div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="box">
+          <h3 class="bold"><span jhiTranslate="createyourideas.description">Description</span></h3>
+          <div [innerHTML]="selectedInActiveIdea.description"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box center" *ngIf="selectedInActiveIdea.logo !== undefined">
+          <a (click)="openFile(selectedInActiveIdea.logoContentType, selectedInActiveIdea.logo)">
+              <img [src]="'data:' + selectedInActiveIdea.logoContentType + ';base64,' + selectedInActiveIdea.logo" style="max-width: 350px;" [alt]="selectedInActiveIdea.title"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="donationInActive">
+          <div *jhiHasAnyAuthority="'ROLE_USER'">
+            <a class="donation float_link" href="/ideas/{{ selectedInActiveIdea.id }}/donation">{{ 'mind-map-node.donation' | translate }}</a>
+          </div>
+          <a class="donation goto-profile float_link" href="/ideas/{{ selectedInActiveIdea.id }}/view">{{ 'mind-map-node.goto-profile' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>

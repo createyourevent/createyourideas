@@ -1,0 +1,31 @@
+{
+  "name": "MonthlyIncomeInvoice",
+  "fields": [
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "idea",
+      "otherEntityRelationshipName": "monthlyIncomeInvoices",
+      "relationshipName": "idea"
+    }
+  ],
+  "entityTableName": "monthly_income_invoice",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211117094739"
+}

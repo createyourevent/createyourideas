@@ -1,0 +1,16 @@
+{
+  "mind-map-node": {
+    "donation": "Donation",
+    "idea": "Idea",
+    "investment": "Investment",
+    "interest": "Interest",
+    "distribution": "Distribution",
+    "income": "Income",
+    "outgoing": "Outgoing",
+    "goto-profile": "Go to profile",
+    "employees": "Employees",
+    "application": "Application",
+    "donations": "Donations"
+
+  }
+}

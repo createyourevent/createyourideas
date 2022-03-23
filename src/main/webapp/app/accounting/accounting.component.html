@@ -1,0 +1,50 @@
+<div class="container-select-idea">
+	<div class="selected-idea-alert alert alert-success" *ngIf="selectedIdea">
+		<span jhiTranslate="homeapp.selectIdea.main.selectedIdea">Selected idea</span> <span>{{selectedIdea.title}}</span>
+	</div>
+	<div id="select-idea">
+	<form [formGroup]="selectIdeaForm" >
+		<label for="changeIdea" jhiTranslate="homeapp.selectIdea.main.selectIdea">Select idea</label>
+		<select id="changeIdea" class="custom-select"  formControlName="ideaName" (ngModelChange)="changeIdea()">
+		<option value="" disabled>Choose your idea</option>
+		<option *ngFor="let idea of ideas" [ngValue]="idea.id">{{idea.title}}</option>
+		</select>
+	</form>
+	</div>
+</div>
+
+<div id="balancesheet">
+  <tabset>
+
+    <tab heading="Incomes" id="tab1">
+      <div *ngIf="!selectedIdea">
+            <span class="selectIdeaTitle" jhiTranslate="accounting.selectIdea">Please select an idea</span>
+      </div>
+      <div *ngIf="selectedIdea">
+        <jhi-income [selectedIdea]="selectedIdea"></jhi-income>
+      </div>
+    </tab>
+
+    <tab heading="Outgoings">
+        <div *ngIf="!selectedIdea">
+            <span class="selectIdeaTitle" jhiTranslate="accounting.selectIdea">Please select an idea</span>
+      </div>
+      <div *ngIf="selectedIdea">
+        <jhi-outgoings [selectedIdea]="selectedIdea"></jhi-outgoings>
+      </div>
+    </tab>
+
+    <tab heading="Total">
+    </tab>
+
+    <tab heading="Worksheet">
+        <div *ngIf="!selectedIdea">
+            <span class="selectIdeaTitle" jhiTranslate="accounting.selectIdea">Please select an idea</span>
+      </div>
+      <div *ngIf="selectedIdea">
+        <jhi-worksheet [selectedIdea]="selectedIdea"></jhi-worksheet>
+    </div>
+    </tab>
+
+  </tabset>
+</div>

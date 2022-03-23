@@ -1,0 +1,6 @@
+{
+  "payment": {
+    "insert-donation": "You have to enter a donation amount of at least CHF 10.",
+    "donation-terminal": "Donation terminal"
+  }
+}

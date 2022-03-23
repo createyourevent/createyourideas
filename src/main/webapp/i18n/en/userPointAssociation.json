@@ -1,0 +1,26 @@
+{
+  "createyourideasApp": {
+    "userPointAssociation": {
+      "home": {
+        "title": "User Point Associations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Point Association",
+        "createOrEditLabel": "Create or edit a User Point Association",
+        "notFound": "No User Point Associations found"
+      },
+      "created": "A new User Point Association is created with identifier {{ param }}",
+      "updated": "A User Point Association is updated with identifier {{ param }}",
+      "deleted": "A User Point Association is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Point Association {{ id }}?"
+      },
+      "detail": {
+        "title": "User Point Association"
+      },
+      "id": "ID",
+      "date": "Date",
+      "points": "Points",
+      "users": "Users"
+    }
+  }
+}

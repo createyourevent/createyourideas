@@ -1,0 +1,141 @@
+<div>
+    <div class="row justify-content-center">
+
+        <div class="alert alert-info" role="alert">
+            <div jhiTranslate="cye-settings.info">
+                Please fill out the form below completely. We will not pass the data on to third parties, nor will we misuse them for marketing purposes.
+
+                However, our platform needs all the information to guarantee you a perfect surfing experience and all functions to do their job. We hope you can understand.
+
+                Sincerely yours
+                Your www.createyourevent.org team with all users
+            </div>
+          </div>
+
+        <div class="col-md-8">
+            <h2 jhiTranslate="settings.title" [translateValues]="{ username:user.login }" *ngIf="user">User settings for [<b>{{ user.login }}</b>]</h2>
+
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="settings.messages.success">
+                <strong>Settings saved!</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form" role="form" autocomplete='off' (ngSubmit)="save()"  [formGroup]="settingsForm" *ngIf="user" novalidate>
+
+
+                <div class="form-group">
+                    <label class="form-control-label" for="address" jhiTranslate="fieldnames.address">Address</label>
+                    <input ngx-google-places-autocomplete autocomplete="off" list="autocompleteOff"  type="text" class="form-control" id="address" name="address" placeholder="{{ 'settings.form.address.placeholder' | translate }}"
+                           formControlName="address" (onAddressChange)="addressChange($event)">
+
+                    <small class="form-text"
+                    jhiTranslate="fieldnames.address.info">
+                    Please enter the address in the following format: '(street house-number, zip-code city, country)'. Example: (Musterstrasse 165, 8200 Schaffhausen, Switzerland)
+                    </small>
+                    <div *ngIf="settingsForm.get('address')!.invalid && (settingsForm.get('address')!.dirty || settingsForm.get('address')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="settingsForm.get('address')?.errors?.required"
+                               jhiTranslate="settings.messages.validate.address.required">
+                            Address1 is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            *ngIf="settingsForm.get('address')?.errors?.pattern"
+                            jhiTranslate="settings.messages.validate.address.pattern">
+                            Address-pattern wrong
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="phone" jhiTranslate="settings-cye.phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" autocomplete="off" list="autocompleteOff"  name="phone" placeholder="{{ 'settings-cye.phone' | translate }}"
+                           formControlName="phone">
+
+                    <div *ngIf="settingsForm.get('phone')!.invalid && (settingsForm.get('phone')!.dirty || settingsForm.get('phone')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="settingsForm.get('phone')?.errors?.required"
+                               jhiTranslate="settings-cye.phone-required">
+                            Phone is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="bank-info box_green">
+                  <h2 jhiTranslate="settings-cye.bank-infos">Banking informations</h2>
+
+                <div class="form-group">
+                  <label class="form-control-label" for="iban" jhiTranslate="settings-cye.iban">IBAN</label>
+                  <input type="text" class="form-control" id="iban" autocomplete="off" list="autocompleteOff"  name="iban" placeholder="{{ 'settings-cye.iban' | translate }}"
+                         formControlName="iban">
+                      <div *ngIf="settingsForm.get('iban')?.invalid && (settingsForm.get('iban')?.dirty || settingsForm.get('iban')?.touched)"
+                         class="alert alert-danger">
+
+                      <small *ngIf="settingsForm.get('iban')?.errors.required"
+                              jhiTranslate="settings-cye.iban-required">
+                        IBAN is required.
+                      </small>
+                      <small *ngIf="settingsForm.get('iban')?.errors.iban"
+                              jhiTranslate="settings-cye.iban-invalid">
+                        IBAN is invalid
+                      </small>
+
+                      <small *ngIf="settingsForm.get('iban')?.valid && (settingsForm.get('iban')?.dirty || settingsForm.get('iban')?.touched)"
+                          class="alert alert-danger"
+                          jhiTranslate="settings-cye.iban-valid">
+                        IBAN is valid.
+                      </small>
+
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="form-control-label" for="bankname" jhiTranslate="settings-cye.bankname">Bankname</label>
+                <input type="text" class="form-control" id="bankname" autocomplete="off" list="autocompleteOff"  name="bankname" placeholder="{{ 'settings-cye.bankname' | translate }}"
+                       formControlName="bankname">
+
+                <div *ngIf="settingsForm.get('bankname')!.invalid && (settingsForm.get('bankname')!.dirty || settingsForm.get('bankname')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="settingsForm.get('bankname')?.errors?.required"
+                           jhiTranslate="settings-cye.bankname-required">
+                        Bankname is required.
+                    </small>
+                </div>
+            </div>
+
+
+
+              <div class="form-group">
+                <label class="form-control-label" for="address" jhiTranslate="fieldnames.address">Bankaddress</label>
+                <input ngx-google-places-autocomplete autocomplete="off" list="autocompleteOff"  type="text" class="form-control" id="bankaddress" name="bankaddress" placeholder="{{ 'settings-cye.bankaddress' | translate }}"
+                       formControlName="bankaddress" (onAddressChange)="bankaddressChange($event)">
+
+                <small class="form-text"
+                jhiTranslate="fieldnames.address.info">
+                Please enter the address in the following format: '(street house-number, zip-code city, country)'. Example: (Musterstrasse 165, 8200 Schaffhausen, Switzerland)
+                </small>
+                <div *ngIf="settingsForm.get('bankaddress')!.invalid && (settingsForm.get('bankaddress')!.dirty || settingsForm.get('bankaddress')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="settingsForm.get('bankaddress')?.errors?.required"
+                           jhiTranslate="settings.messages.validate.address.required">
+                        Address1 is required.
+                    </small>
+                    <small class="form-text text-danger"
+                        *ngIf="settingsForm.get('bankaddress')?.errors?.pattern"
+                        jhiTranslate="settings.messages.validate.address.pattern">
+                        Address-pattern wrong
+                    </small>
+                </div>
+            </div>
+          </div>
+
+                <button type="submit" [disabled]="settingsForm.invalid" class="btn btn-primary" jhiTranslate="settings.form.button">Save</button>
+            </form>
+            <hr/>
+            <div style="text-align: center;">
+              <img src="../../../content/images/ssl_https.png" />
+            </div>
+        </div>
+    </div>
+</div>

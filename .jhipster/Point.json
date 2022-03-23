@@ -1,0 +1,55 @@
+{
+  "name": "Point",
+  "fields": [
+    {
+      "fieldName": "key",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "keyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "keyDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "PointsCategory",
+      "fieldValues": "EVENT,SHOP,SERVICE,COMMENT,RATING,REGISTER,MISCELLANEOUS,PRODUCT",
+      "fieldTypeJavadoc": "JHipster JDL model for Accounting"
+    },
+    {
+      "fieldName": "points",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "countPerDay",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "point",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211026180643"
+}

@@ -1,0 +1,18 @@
+{
+  "view-idea": {
+    "parent-idea": "Parent idea",
+    "outgoings": "Outgoings",
+    "incomes": "Incomes",
+    "investment": "Investment",
+    "distribution": "Distribution",
+    "interest": "Interest",
+    "description": "Description",
+    "page-title": "View idea",
+    "daily-outgoings": "Daily incomes",
+    "daily-incomes": "Daily outgoings",
+    "daily-worksheets": "Daily worksheets",
+    "daily-profit": "Daily profit",
+    "worksheets": "Worksheets",
+    "profit": "Profit"
+  }
+}

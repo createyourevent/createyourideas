@@ -1,0 +1,10 @@
+{
+  "comment-box": {
+    "comment-valid": "Thank you for your feedback",
+    "comment-invalid": "This field is required.",
+    "save": "Save",
+    "feedbacks-and-comments": "Comments and feedback's",
+    "answer": "Answer",
+    "answer-invalid": "Answer invalid"
+  }
+}

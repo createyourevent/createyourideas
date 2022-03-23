@@ -1,0 +1,28 @@
+{
+  "createyourideas": {
+    "menu.idea-pinwall": "Ideen Pinwand",
+    "menu.idea-funnel": "Ideen Trichter",
+    "menu.accounting": "Buchhaltung/Finanzen",
+    "menu.ideas": "Ideen",
+    "menu.create-idea": "Erstelle Idee",
+    "menu.overview-ideas": "Übersicht Ideen",
+
+    "description": "Beschreibung",
+    "investment": "Investition",
+    "interest": "Verzinsung",
+    "distribution": "Ausschüttung",
+    "select-idea": "Wähle Idee",
+    "main-title": "Create Your Ideas",
+    "title": "Titel",
+    "idea": "Idee",
+
+    "home.info": "Die Idee von Create Your Ideas besteht darin, dass wir eine Plattform machen möchten, auf welcher wir jegliche Ideen zentralisieren möchten, und jene mit einem Art Stammbaum abbilden in einer Art Trichter. Es ist ja meistens so, dass man nicht ganz bei Null anfängt, wenn man etwas entwickeln will oder eine neue Idee hat. Nun möchten wir diese Tatsache online abbilden. Eben eine Art Ideen Stammbaum. Nun zu beginn sind es ja noch wenige Ideen, und wir hoffen, dass es mit der Zeit immer mehr werden. Bis es exponentiell zunimmt. Und eine exponentielle Entwicklung sieht ja  ähnlich aus wie ein Trichter, wenn man es in einem Koordinatenkreuz abbildet auf beid Seiten. Somit haben alle die Möglichkeit sich anschliessend diesen Stammbaum online zu betrachten und jegliche Ideen weiterentwickeln, welche es schon in dem Stammbaum gibt. So denken wir, dass wir sehr schnell und flexibel agieren können, wenn alle eine Einsicht darauf haben. Und bei uns werden statt Firmen gegründet, Ideen gegründet, was auch um ein vielfaches Einfacher ist, bei uns anschliessend eine Idee zu gründen, statt einer eigene Firma, welche nur eine Idee entwickelt in diesem Sinne. Wer bei uns eine Idee gründet, welche anschliessend einen Gewinn erwirtschaftet, ist dies natürlich Ihr Gewinn. Man kann sagen, dass wir Idee und Firma bei uns synonym betrachten. Auch Fallen die ganzen komplizierten Starthürden weg, welche man mit einer Firma hätte wie die Gesellschaftsformen und versicherungstechnischen Aspekte. Somit möchten wir den Start-Up Prozess um ein vielfaches Vereinfachen.",
+
+
+    "idea-pinwall.new-ideas": "Wählen Sie unten, von welcher Idee Sie die Beschreibung und die Kenndaten ansehen möchten. Die Ideen in dieser Auswahl sind noch inaktiv, das heisst, Sie sind noch nicht im Ideentrichter abgebildet, und in den Berechnungen noch nicht dabei.",
+    "idea-pinwall.active-ideas": "Wählen Sie unten, von welcher Idee Sie die Beschreibung und die Kenndaten ansehen möchten. Die Ideen in dieser Auswahl sind aktiv, das heisst, Sie sind im Ideentrichter abgebildet, und in den Berechnungen mit dabei. ",
+    "idea-pinwall.inactive-ideas": "Neue, noch nicht aktive Ideen",
+    "active-ideas": "Aktive Ideen"
+
+  }
+}

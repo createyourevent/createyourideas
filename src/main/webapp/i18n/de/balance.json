@@ -1,0 +1,28 @@
+{
+  "createyourideasApp": {
+    "balance": {
+      "home": {
+        "title": "Balances",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Balance erstellen",
+        "createOrEditLabel": "Balance erstellen oder bearbeiten",
+        "notFound": "Keine Balances gefunden"
+      },
+      "created": "Balance erstellt mit ID {{ param }}",
+      "updated": "Balance aktualisiert mit ID {{ param }}",
+      "deleted": "Balance gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Balance {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Balance"
+      },
+      "id": "ID",
+      "dailyBalance": "Daily Balance",
+      "netProfit": "Net Profit",
+      "date": "Date",
+      "billed": "Billed",
+      "idea": "Idea"
+    }
+  }
+}

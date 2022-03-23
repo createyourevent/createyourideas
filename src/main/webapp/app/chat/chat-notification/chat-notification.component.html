@@ -1,0 +1,13 @@
+<ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+    <div class="chat-notification" (click)="openChatNames()"></div>
+
+        <div class="totalMessage">{{ totalMessages }}</div>
+
+    <div class="chat-notification-users" [hidden]="isShowUsers">
+        <ng-container *ngFor="let user_count of usersAndCount">
+            <div class="user"><a (click)="openChatWindow(user_count.user)">{{ user_count.user.firstName }} {{ user_count.user.lastName }}</a></div>
+            <div class="counterMessages">{{ user_count.count }}</div>
+        </ng-container>
+    </div>
+</ng-container>
+

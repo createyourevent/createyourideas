@@ -1,0 +1,10 @@
+{
+  "rating": {
+    "feedback": "Bevor Sie liken können, müssen Sie rechts  im Textfeld eine kurzes Feedback mit mindestens 50 Zeichen eingeben, wiso sie welche entscheidung getroffen haben.",
+    "stars": "Sterne",
+    "mail": "Email",
+    "comment": "Kommentar",
+    "date": "Datum"
+
+  }
+}

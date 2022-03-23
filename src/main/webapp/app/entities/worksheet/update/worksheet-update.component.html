@@ -1,0 +1,175 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-worksheet-heading"
+        data-cy="WorksheetCreateUpdateHeading"
+        jhiTranslate="createyourideasApp.worksheet.home.createOrEditLabel"
+      >
+        Create or edit a Worksheet
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.jobtitle" for="field_jobtitle">Jobtitle</label>
+          <input type="text" class="form-control" name="jobtitle" id="field_jobtitle" data-cy="jobtitle" formControlName="jobtitle" />
+          <div *ngIf="editForm.get('jobtitle')!.invalid && (editForm.get('jobtitle')!.dirty || editForm.get('jobtitle')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('jobtitle')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.jobdescription" for="field_jobdescription"
+            >Jobdescription</label
+          >
+          <textarea
+            class="form-control"
+            name="jobdescription"
+            id="field_jobdescription"
+            data-cy="jobdescription"
+            formControlName="jobdescription"
+          ></textarea>
+          <div
+            *ngIf="
+              editForm.get('jobdescription')!.invalid && (editForm.get('jobdescription')!.dirty || editForm.get('jobdescription')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('jobdescription')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.dateStart" for="field_dateStart">Date Start</label>
+          <div class="d-flex">
+            <input
+              id="field_dateStart"
+              data-cy="dateStart"
+              type="datetime-local"
+              class="form-control"
+              name="dateStart"
+              formControlName="dateStart"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.dateEnd" for="field_dateEnd">Date End</label>
+          <div class="d-flex">
+            <input
+              id="field_dateEnd"
+              data-cy="dateEnd"
+              type="datetime-local"
+              class="form-control"
+              name="dateEnd"
+              formControlName="dateEnd"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.costHour" for="field_costHour">Cost Hour</label>
+          <input type="number" class="form-control" name="costHour" id="field_costHour" data-cy="costHour" formControlName="costHour" />
+          <div *ngIf="editForm.get('costHour')!.invalid && (editForm.get('costHour')!.dirty || editForm.get('costHour')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('costHour')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('costHour')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.hours" for="field_hours">Hours</label>
+          <input type="text" class="form-control" name="hours" id="field_hours" data-cy="hours" formControlName="hours" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.total" for="field_total">Total</label>
+          <input type="number" class="form-control" name="total" id="field_total" data-cy="total" formControlName="total" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.billed" for="field_billed">Billed</label>
+          <input type="checkbox" class="form-check" name="billed" id="field_billed" data-cy="billed" formControlName="billed" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.auto" for="field_auto">Auto</label>
+          <input type="checkbox" class="form-check" name="auto" id="field_auto" data-cy="auto" formControlName="auto" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.employee" for="field_employee">Employee</label>
+          <select class="form-control" id="field_employee" data-cy="employee" name="employee" formControlName="employee">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="employeeOption.id === editForm.get('employee')!.value?.id ? editForm.get('employee')!.value : employeeOption"
+              *ngFor="let employeeOption of employeesSharedCollection; trackBy: trackEmployeeById"
+            >
+              {{ employeeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="createyourideasApp.worksheet.idea" for="field_idea">Idea</label>
+          <select class="form-control" id="field_idea" data-cy="idea" name="idea" formControlName="idea">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ideaOption.id === editForm.get('idea')!.value?.id ? editForm.get('idea')!.value : ideaOption"
+              *ngFor="let ideaOption of ideasSharedCollection; trackBy: trackIdeaById"
+            >
+              {{ ideaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

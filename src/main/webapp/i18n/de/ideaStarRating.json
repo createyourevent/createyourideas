@@ -1,0 +1,28 @@
+{
+  "createyourideasApp": {
+    "ideaStarRating": {
+      "home": {
+        "title": "Idea Star Ratings",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Idea Star Rating erstellen",
+        "createOrEditLabel": "Idea Star Rating erstellen oder bearbeiten",
+        "notFound": "Keine Idea Star Ratings gefunden"
+      },
+      "created": "Idea Star Rating erstellt mit ID {{ param }}",
+      "updated": "Idea Star Rating aktualisiert mit ID {{ param }}",
+      "deleted": "Idea Star Rating gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Idea Star Rating {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Idea Star Rating"
+      },
+      "id": "ID",
+      "stars": "Stars",
+      "date": "Date",
+      "comment": "Comment",
+      "idea": "Idea",
+      "user": "User"
+    }
+  }
+}

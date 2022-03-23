@@ -1,0 +1,28 @@
+{
+  "createyourideasApp": {
+    "ideaStarRating": {
+      "home": {
+        "title": "Idea Star Ratings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Idea Star Rating",
+        "createOrEditLabel": "Create or edit a Idea Star Rating",
+        "notFound": "No Idea Star Ratings found"
+      },
+      "created": "A new Idea Star Rating is created with identifier {{ param }}",
+      "updated": "A Idea Star Rating is updated with identifier {{ param }}",
+      "deleted": "A Idea Star Rating is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Idea Star Rating {{ id }}?"
+      },
+      "detail": {
+        "title": "Idea Star Rating"
+      },
+      "id": "ID",
+      "stars": "Stars",
+      "date": "Date",
+      "comment": "Comment",
+      "idea": "Idea",
+      "user": "User"
+    }
+  }
+}

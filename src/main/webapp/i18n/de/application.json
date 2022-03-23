@@ -1,0 +1,31 @@
+{
+  "createyourideasApp": {
+    "application": {
+      "home": {
+        "title": "Applications",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Application erstellen",
+        "createOrEditLabel": "Application erstellen oder bearbeiten",
+        "notFound": "Keine Applications gefunden"
+      },
+      "created": "Application erstellt mit ID {{ param }}",
+      "updated": "Application aktualisiert mit ID {{ param }}",
+      "deleted": "Application gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Application {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Application"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "date": "Date",
+      "desiredHourlyWage": "Desired Hourly Wage",
+      "seen": "Seen",
+      "responded": "Responded",
+      "user": "User",
+      "idea": "Idea"
+    }
+  }
+}

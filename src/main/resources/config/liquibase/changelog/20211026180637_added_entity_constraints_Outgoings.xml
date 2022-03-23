@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Outgoings.
+    -->
+    <changeSet id="20211026180637-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="outgoings_id"
+                                 baseTableName="rel_outgoings__outgoing_ideas"
+                                 constraintName="fk_rel_outgoings__outgoing_ideas__outgoings_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="outgoings"/>
+
+        <addForeignKeyConstraint baseColumnNames="outgoing_ideas_id"
+                                 baseTableName="rel_outgoings__outgoing_ideas"
+                                 constraintName="fk_rel_outgoings__outgoing_ideas__outgoing_ideas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="idea"/>
+
+        <addForeignKeyConstraint baseColumnNames="idea_id"
+                                 baseTableName="outgoings"
+                                 constraintName="fk_outgoings__idea_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="idea"/>
+    </changeSet>
+</databaseChangeLog>

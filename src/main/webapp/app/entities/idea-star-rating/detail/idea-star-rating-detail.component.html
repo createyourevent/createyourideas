@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ideaStarRating">
+      <h2 data-cy="ideaStarRatingDetailsHeading">
+        <span jhiTranslate="createyourideasApp.ideaStarRating.detail.title">Idea Star Rating</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ideaStarRating.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.ideaStarRating.stars">Stars</span></dt>
+        <dd>
+          <span>{{ ideaStarRating.stars }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.ideaStarRating.date">Date</span></dt>
+        <dd>
+          <span>{{ ideaStarRating.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.ideaStarRating.comment">Comment</span></dt>
+        <dd>
+          <span>{{ ideaStarRating.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.ideaStarRating.idea">Idea</span></dt>
+        <dd>
+          <div *ngIf="ideaStarRating.idea">
+            <a [routerLink]="['/idea', ideaStarRating.idea?.id, 'view']">{{ ideaStarRating.idea?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.ideaStarRating.user">User</span></dt>
+        <dd>
+          <span>{{ ideaStarRating.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/idea-star-rating', ideaStarRating.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

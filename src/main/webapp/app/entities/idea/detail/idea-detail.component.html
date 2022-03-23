@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="idea">
+      <h2 data-cy="ideaDetailsHeading"><span jhiTranslate="createyourideasApp.idea.detail.title">Idea</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ idea.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.title">Title</span></dt>
+        <dd>
+          <span>{{ idea.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.logo">Logo</span></dt>
+        <dd>
+          <div *ngIf="idea.logo">
+            <a (click)="openFile(idea.logo, idea.logoContentType)">
+              <img [src]="'data:' + idea.logoContentType + ';base64,' + idea.logo" style="max-width: 100%" alt="idea image" />
+            </a>
+            {{ idea.logoContentType }}, {{ byteSize(idea.logo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.description">Description</span></dt>
+        <dd>
+          <span>{{ idea.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.ideatype">Ideatype</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'createyourideasApp.Ideatype.' + idea.ideatype }}">{{ idea.ideatype }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.interest">Interest</span></dt>
+        <dd>
+          <span>{{ idea.interest }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.distribution">Distribution</span></dt>
+        <dd>
+          <span>{{ idea.distribution }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.investment">Investment</span></dt>
+        <dd>
+          <span>{{ idea.investment }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.active">Active</span></dt>
+        <dd>
+          <span>{{ idea.active }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.date">Date</span></dt>
+        <dd>
+          <span>{{ idea.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.profitBalance">Profit Balance</span></dt>
+        <dd>
+          <div *ngIf="idea.profitBalance">
+            <a [routerLink]="['/profit-balance', idea.profitBalance?.id, 'view']">{{ idea.profitBalance?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.user">User</span></dt>
+        <dd>
+          <span>{{ idea.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.employees">Employees</span></dt>
+        <dd>
+          <span *ngFor="let employees of idea.employees; let last = last">
+            <a [routerLink]="['/employee', employees?.id, 'view']">{{ employees.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="createyourideasApp.idea.idea">Idea</span></dt>
+        <dd>
+          <div *ngIf="idea.idea">
+            <a [routerLink]="['/idea', idea.idea?.id, 'view']">{{ idea.idea?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/idea', idea.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

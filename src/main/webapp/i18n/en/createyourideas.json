@@ -1,0 +1,27 @@
+{
+  "createyourideas": {
+    "menu.idea-pinwall": "Ideas pinwall",
+    "menu.idea-funnel": "Ideas funnel",
+    "menu.accounting": "Accounting",
+    "menu.ideas": "Ideas",
+    "menu.create-idea": "Create idea",
+    "menu.overview-ideas": "Overview ideas",
+
+    "description": "Description",
+    "investment": "Investment",
+    "interest": "Interest",
+    "distribution": "Distribution",
+    "select-idea": "Select idea",
+    "main-title": "Create Your Ideas",
+    "title": "Title",
+    "idea": "Idea",
+
+    "home.info": "The idea of ​​Create Your Ideas is that we want to make a platform on which we want to centralize all ideas, and map those with a kind of family tree in a kind of funnel. Most of the time, when you want to develop something or have a new idea, you don't start from scratch. Now we would like to map this fact online. A kind of family tree of ideas. At the beginning there are still a few ideas, and we hope that there will be more and more over time. Until it increases exponentially. And an exponential development looks similar to a funnel if you map it in a coordinate system on both sides. So everyone has the opportunity to look at this family tree online and develop any ideas that already exist in the family tree. So we think that we can act very quickly and flexibly if everyone has an insight into it. And with us instead of companies, ideas are founded, which is also much easier, then to found an idea with us instead of our own company that only develops an idea in this sense. Whoever founds an idea with us, which then generates a profit, is of course your profit. You can say that we consider the idea and the company to be synonymous with us. All the complicated starting hurdles that one would have with a company, such as the corporate forms and insurance-related aspects, also fall away. We would like to simplify the start-up process many times over.",
+
+
+    "idea-pinwall.new-ideas": "Select below which idea you would like to see the description and characteristics of. The ideas in this selection are still inactive, that is, they are not yet shown in the idea funnel and not included in the calculations.",
+    "idea-pinwall.active-ideas": "Select below which idea you would like to see the description and characteristics of. The ideas in this selection are active, that is, they are shown in the idea funnel and included in the calculations.",
+    "idea-pinwall.inactive-ideas": "New, yet not active ideas",
+    "active-ideas": "Active ideas"
+  }
+}

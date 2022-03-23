@@ -1,0 +1,34 @@
+{
+  "createyourideasApp": {
+    "worksheet": {
+      "home": {
+        "title": "Worksheets",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Worksheet erstellen",
+        "createOrEditLabel": "Worksheet erstellen oder bearbeiten",
+        "notFound": "Keine Worksheets gefunden"
+      },
+      "created": "Worksheet erstellt mit ID {{ param }}",
+      "updated": "Worksheet aktualisiert mit ID {{ param }}",
+      "deleted": "Worksheet gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Worksheet {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Worksheet"
+      },
+      "id": "ID",
+      "jobtitle": "Jobtitle",
+      "jobdescription": "Jobdescription",
+      "dateStart": "Date Start",
+      "dateEnd": "Date End",
+      "costHour": "Cost Hour",
+      "hours": "Hours",
+      "total": "Total",
+      "billed": "Billed",
+      "auto": "Auto",
+      "employee": "Employee",
+      "idea": "Idea"
+    }
+  }
+}

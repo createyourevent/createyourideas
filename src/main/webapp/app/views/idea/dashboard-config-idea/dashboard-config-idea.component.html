@@ -1,0 +1,22 @@
+<mat-toolbar color="warn">
+  <mat-toolbar-row color="warn">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-action-list>
+      <mat-list-item [routerLink]="['comments']">Comments</mat-list-item>
+      <mat-list-item [routerLink]="['ratings']">Ratings</mat-list-item>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<button type="submit" (click)="back()" class="btn btn-info" data-cy="entityDetailsBackButton">
+  <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+</button>

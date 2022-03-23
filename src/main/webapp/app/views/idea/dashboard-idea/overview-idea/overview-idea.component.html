@@ -1,0 +1,242 @@
+<p-card>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Finance / Accounting</h1>
+      <h2>{{ idea.title }}</h2>
+    </div>
+  </div>
+</p-card>
+<div class="row">
+  <div class="col-md-6">
+    <p-card>
+
+      <h5>Incomes</h5>
+      <p>View and filter the incomes.</p>
+      <p-table #dt1 [value]="incomes" dataKey="id"
+          [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+          [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [globalFilterFields]="['title','description','date','value', 'billed']">
+          <ng-template pTemplate="caption">
+              <div class="p-d-flex">
+                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                  <span class="p-input-icon-left p-ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Title
+                          <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Description
+                          <p-columnFilter type="text" field="description" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Date
+                          <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Value
+                          <p-columnFilter type="numeric" field="value" display="menu" currency="USD"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th style="width: 8rem">
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Billed
+                          <p-columnFilter type="boolean" field="billed" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-income>
+              <tr>
+                  <td>
+                      {{income.title}}
+                  </td>
+                  <td>
+                    {{income.description}}
+                </td>
+                  <td>
+                      {{income.date | date: 'medium'}}
+                  </td>
+                  <td>
+                      {{income.value | currency:'CHF'}}
+                  </td>
+                  <td class="p-text-center">
+                      <i class="pi" [ngClass]="{'true-icon pi-check-circle': income.billed, 'false-icon pi-times-circle': !income.billed}"></i>
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="5">No incomes found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+
+
+    </p-card>
+  </div>
+  <div class="col-md-6">
+    <p-card>
+
+      <h5>Outgoings</h5>
+      <p>View and filter the outgoings.</p>
+      <p-table #dt1 [value]="outgoings" dataKey="id"
+          [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+          [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [globalFilterFields]="['title','description','date','value', 'billed']">
+          <ng-template pTemplate="caption">
+              <div class="p-d-flex">
+                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                  <span class="p-input-icon-left p-ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Title
+                          <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Description
+                          <p-columnFilter type="text" field="description" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Date
+                          <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Value
+                          <p-columnFilter type="numeric" field="value" display="menu" currency="USD"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th style="width: 8rem">
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Billed
+                          <p-columnFilter type="boolean" field="billed" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-outgoing>
+              <tr>
+                  <td>
+                      {{outgoing.title}}
+                  </td>
+                  <td>
+                    {{outgoing.description}}
+                </td>
+                  <td>
+                      {{outgoing.date | date: 'medium'}}
+                  </td>
+                  <td>
+                      {{outgoing.value | currency:'CHF'}}
+                  </td>
+                  <td class="p-text-center">
+                      <i class="pi" [ngClass]="{'true-icon pi-check-circle': outgoing.billed, 'false-icon pi-times-circle': !outgoing.billed}"></i>
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="5">No outgoings found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+
+
+    </p-card>
+  </div>
+</div>
+<p-card>
+  <jhi-incomes-outgoings-bar-chart [idea]="idea"></jhi-incomes-outgoings-bar-chart>
+</p-card>
+
+
+<p-card>
+  <div class="row">
+    <div class="col-md-12">
+
+
+      <h5>Balances</h5>
+      <p>View and filter the balances.</p>
+      <p-table #dt1 [value]="balances" dataKey="id"
+          [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-gridlines"
+          [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [globalFilterFields]="['dailyBalance','netProfit','date']">
+          <ng-template pTemplate="caption">
+              <div class="p-d-flex">
+                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                  <span class="p-input-icon-left p-ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Daily Balance
+                          <p-columnFilter type="numeric" field="title" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Net profit
+                          <p-columnFilter type="numeric" field="description" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Date
+                          <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+                      </div>
+                  </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-balance>
+              <tr>
+                  <td>
+                      {{balance.dailyBalance | currency}}
+                  </td>
+                  <td>
+                    {{balance.netProfit | currency}}
+                </td>
+                  <td>
+                      {{balance.date | date: 'medium'}}
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="3">No balances found.</td>
+              </tr>
+          </ng-template>
+      </p-table>
+
+    </div>
+  </div>
+</p-card>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Income.
+    -->
+    <changeSet id="20211026180636-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="income_id"
+                                 baseTableName="rel_income__income_ideas"
+                                 constraintName="fk_rel_income__income_ideas__income_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="income"/>
+
+        <addForeignKeyConstraint baseColumnNames="income_ideas_id"
+                                 baseTableName="rel_income__income_ideas"
+                                 constraintName="fk_rel_income__income_ideas__income_ideas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="idea"/>
+
+        <addForeignKeyConstraint baseColumnNames="idea_id"
+                                 baseTableName="income"
+                                 constraintName="fk_income__idea_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="idea"/>
+    </changeSet>
+</databaseChangeLog>

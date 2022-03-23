@@ -1,0 +1,29 @@
+{
+  "createyourideasApp": {
+    "donation": {
+      "home": {
+        "title": "Donations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Donation",
+        "createOrEditLabel": "Create or edit a Donation",
+        "notFound": "No Donations found"
+      },
+      "created": "A new Donation is created with identifier {{ param }}",
+      "updated": "A Donation is updated with identifier {{ param }}",
+      "deleted": "A Donation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Donation {{ id }}?"
+      },
+      "detail": {
+        "title": "Donation"
+      },
+      "id": "ID",
+      "amount": "Amount",
+      "date": "Date",
+      "billed": "Billed",
+      "txId": "Tx Id",
+      "user": "User",
+      "idea": "Idea"
+    }
+  }
+}

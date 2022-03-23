@@ -1,0 +1,13 @@
+{
+  "realm": "jhipster",
+  "auth-server-url": "https://keycloak.createyourevent.org/auth",
+  "ssl-required": "none",
+  "resource": "web_app",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "9f608490-949a-4d83-95b0-f77c64f374bc"
+  },
+  "use-resource-role-mappings": true,
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}
